@@ -21,6 +21,7 @@ export default function ProductList() {
           price={item.price}
           rating={item.rating}
           title={item.title}
+          display={item.display}
         />
     ))
   } else if (productStatus === "failed") {

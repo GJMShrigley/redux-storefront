@@ -20,10 +20,12 @@ const productSlice = createSlice({
         state.status = "loading";
       })
       .addCase(fetchProductData.fulfilled, (state, action) => {
-        console.log(state.products, action)
+        const payloadCopy = action.payload;
+        payloadCopy.forEach((product) => {
+          product.display = true;
+        });
         state.status = "succeeded";
-        state.products = action.payload;
-        console.log(state.products, action)
+        state.products = payloadCopy;
       })
       .addCase(fetchProductData.rejected, (state, action) => {
         state.status = "failed";

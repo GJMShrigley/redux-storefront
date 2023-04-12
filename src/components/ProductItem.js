@@ -1,6 +1,7 @@
 import React from "react";
 
 function ProductItem(props) {
+  if (props.display) {
   return (
     <li className="product-item">
       {/* <div className="product-image-wrapper"> */}
@@ -17,6 +18,7 @@ function ProductItem(props) {
       <div className="product-price"></div>
     </li>
   );
+}
 }
 
 export default ProductItem;
