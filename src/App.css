@@ -49,6 +49,7 @@
   padding: 1vh;
   height: 15vh;
   display: flex;
+  overflow: hidden;
 }
 
 /* .product-image-wrapper {

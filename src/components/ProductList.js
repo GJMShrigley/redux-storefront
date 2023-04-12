@@ -1,18 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import ProductItem from "./ProductItem";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchProductData, selectProducts } from "../store/product-slice";
+import { useSelector } from "react-redux";
 
 export default function ProductList() {
-  const dispatch = useDispatch();
-  const products = useSelector(selectProducts);
+  const products = useSelector(state => state.products.products);
   const productStatus = useSelector(state => state.products.status);
   const error = useSelector(state => state.products.error);
-  useEffect(() => {
-    if (productStatus === "idle") {
-      dispatch(fetchProductData());
-    }
-  }, [productStatus, dispatch]);
   
   let content;
 
@@ -33,7 +26,6 @@ export default function ProductList() {
   } else if (productStatus === "failed") {
     content = <div className="product-item">{error}</div>
   }
-
 
   return <ul className="product-list">{content}</ul>;
 }
