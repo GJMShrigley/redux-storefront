@@ -36,11 +36,11 @@ const productSlice = createSlice({
 
 export const fetchProductData = createAsyncThunk("products/fetchProductData", async (cat) => {
   if (cat === 'all') {
-    const res = await fetch("https://fakestoreapi.com/products?limit=10")
+    const res = await fetch("https://fakestoreapi.com/products")
     .then((res) => res.json())
     return res;
   }  else {
-    const res = await fetch(`https://fakestoreapi.com/products/category/${cat}?limit=10`)
+    const res = await fetch(`https://fakestoreapi.com/products/category/${cat}`)
     .then((res)=> res.json())
     return res;
   }});

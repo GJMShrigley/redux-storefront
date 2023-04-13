@@ -38,7 +38,9 @@
 }
 
 .product-list {
-  height: 90vh;
+  height: auto;
+  min-height: 75vh;
+  overflow-y: hidden;
 }
 
 .product-item {
@@ -91,5 +93,17 @@
 
 .product-price {
   
+}
+
+.page-nav {
+  width: 100vw;
+  height: 5vh;
+  display: flex;
+}
+
+.page-btn {
+  width: 2vw;
+  height: 2vh;
+
 }
 
