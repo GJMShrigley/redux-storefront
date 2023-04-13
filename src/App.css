@@ -95,15 +95,28 @@
   
 }
 
-.page-nav {
+.page-buttons {
   width: 100vw;
-  height: 5vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+.page-nav {
+  height: 2vh;
   display: flex;
 }
 
 .page-btn {
   width: 2vw;
-  height: 2vh;
+  height: 1vh;
+}
+
+.product-dropdown {
+  width: auto;
+  display: flex;
+}
+
+.product-number {
 
 }
 

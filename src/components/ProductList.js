@@ -17,7 +17,6 @@ export default function ProductList() {
     pageNav.textContent = "";
 
     for (let i = 0; i < (products.length / productsPerPage); i++) {
-      
       const pageBtn = document.createElement("div");
       pageBtn.classList.add("page-btn")
       pageBtn.innerHTML = (i + 1);
@@ -25,18 +24,24 @@ export default function ProductList() {
       pageNav.appendChild(pageBtn);
     }
 
-  }, [products])
+  }, [products, productsPerPage])
 
+  //select page number
   function selectPage(e) {
     const selectedPage = e.target.innerHTML;
     const productSelection = products.slice(((selectedPage * productsPerPage) - productsPerPage), (selectedPage * productsPerPage));
     setDisplayedProducts(productSelection);
   }
+
+  //change number of products displayed on page
+  function changeNumber(e) {
+    setProductsPerPage(e.target.value);
+  }
   
   let content;
 
   if (productStatus === "loading") {
-    content = <div className="product-item">LOADING</div>
+    content = <div className="product-item">LOADING PRODUCTS</div>
   } else if (productStatus === "succeeded") {
     content = displayedProducts.map(item => (
         <ProductItem
@@ -56,7 +61,14 @@ export default function ProductList() {
 
   return <div>
     <ul className="product-list">{content}</ul>
-    <nav className="page-nav">
-    </nav>
+    <div className="page-buttons">
+    <nav className="page-nav"></nav>
+    <select className="product-dropdown" onChange={changeNumber}>
+      <option className="product-number">5</option>
+      <option className="product-number">10</option>
+      <option className="product-number">15</option>
+    </select>
+    </div>
+
     </div>;
 }
