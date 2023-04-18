@@ -9,12 +9,14 @@ export default function ProductList() {
   const [productsPerPage, setProductsPerPage] = useState(5);
   const [page, setPage] = useState(1);
   const [displayedProducts, setDisplayedProducts] = useState([]);
+  let content;
 
+  //update products on page, dynamically generate page numbers
   useEffect(() => {
     const initialProducts = products.slice(((page * productsPerPage) - productsPerPage), (page * productsPerPage));
-    setDisplayedProducts(initialProducts);
     const pageNav = document.querySelector(".page-nav");
     pageNav.textContent = "";
+    setDisplayedProducts(initialProducts);
 
     for (let i = 0; i < (products.length / productsPerPage); i++) {
       const pageBtn = document.createElement("div");
@@ -23,7 +25,6 @@ export default function ProductList() {
       pageBtn.onclick = selectPage;
       pageNav.appendChild(pageBtn);
     }
-
   }, [products, productsPerPage])
 
   //select page number
@@ -37,9 +38,8 @@ export default function ProductList() {
   function changeNumber(e) {
     setProductsPerPage(e.target.value);
   }
-  
-  let content;
 
+  //populate product list
   if (productStatus === "loading") {
     content = <div className="product-item">LOADING PRODUCTS</div>
   } else if (productStatus === "succeeded") {
