@@ -34,16 +34,29 @@ const productSlice = createSlice({
   }
 });
 
-export const fetchProductData = createAsyncThunk("products/fetchProductData", async (cat) => {
-  if (cat === 'all') {
-    const res = await fetch("https://fakestoreapi.com/products")
+export const fetchProductData = createAsyncThunk("products/fetchProductData", async (params) => {
+  const request = "https://fakestoreapi.com/products";
+  const {category, sort} = params;
+
+  if (category === 'all') {
+    const res = await fetch(`${request}?sort=${sort}`)
     .then((res) => res.json())
     return res;
   }  else {
-    const res = await fetch(`https://fakestoreapi.com/products/category/${cat}`)
+    const res = await fetch(`${request}/category/${category}?sort=${sort}`)
     .then((res)=> res.json())
     return res;
   }});
+
+  // if (category === 'all') {
+  //   const res = await fetch("https://fakestoreapi.com/products")
+  //   .then((res) => res.json())
+  //   return res;
+  // }  else {
+  //   const res = await fetch(`https://fakestoreapi.com/products/category/${category}`)
+  //   .then((res)=> res.json())
+  //   return res;
+  // }});
 
 export const selectProducts = (state) => state.products;
 

@@ -4,20 +4,29 @@ import { addProducts, fetchProductData } from "../store/product-slice";
 
 
 export default function Navbar() {
-  const [category, setCategory] = useState("all");
+
 
   const dispatch = useDispatch();
   const products = useSelector(state => state.products.products);
-  const [searchResult, setSearchResult] = useState(products)
+  const [searchResult, setSearchResult] = useState(products);
+  const [category, setCategory] = useState("all");
+  const [sort, setSort] = useState("asc");
   
   useEffect(() => {
-      dispatch(fetchProductData(category));
-  }, [dispatch, category])
+    const params = {category, sort};
+      dispatch(fetchProductData(params));
+  }, [dispatch, category, sort])
 
   function changeCategory(e) {
     const target = e.target.innerHTML.toLowerCase();
     const string = target.toString();
     setCategory(string)
+  }
+
+  function changeSort(e) {
+    const target = e.target.value.toLowerCase();
+    const string = target.toString();
+    setSort(string);
   }
 
   function searchText(e) {
@@ -49,6 +58,10 @@ export default function Navbar() {
       <div className="navbar-search">
         <input className="search-input" onChange={searchText}></input>
         <button className="search-btn">Go</button>
+        <select className="search-dropdown" onChange={changeSort}>
+      <option className="search-option">Asc</option>
+      <option className="search-option">Desc</option>
+    </select>
       </div>
       <ul className="navbar-list">
         <button className="navbar-item" onClick={changeCategory}>All</button>

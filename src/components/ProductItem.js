@@ -12,9 +12,9 @@ export default function ProductItem(props) {
   if (props.display) {
     return (
       <li className="product-item">
-        {/* <div className="product-image-wrapper"> */}
+        <div className="product-image-wrapper">
         <img className="product-image" src={props.image}></img>
-        {/* </div> */}
+        </div>
         <div className="product-details">
           <div className="product-title">{props.title}</div>
           <div className="product-rating">
@@ -26,7 +26,7 @@ export default function ProductItem(props) {
           <div className="product-description">{props.description}</div>
         </div>
         <div className="product-options">
-          <div className="product-price">&#163;{props.price}</div>
+          <div className="product-price">{props.price.toLocaleString("en-GB", {style: "currency", currency: "GBP", minimumFractionDigits: 2})}</div>
           <div className="product-add" onClick={addProductToCart}>ADD TO CART</div>
         </div>
       </li>

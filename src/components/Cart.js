@@ -3,11 +3,11 @@ import { useSelector } from "react-redux";
 import CartItem from "./CartItem";
 
 export default function Cart() {
-  const cart = useSelector((state) => state.cart.list);
-  const totalPrice = useSelector((state) => state.cart.totalPrice)
+  const cart = useSelector((state) => state.cart);
+  const [cartItems, totalPrice, totalQuantity] = [cart.list, cart.totalPrice, cart.totalQuantity] ;
   const [display, setDisplay] = useState(false);
   let modal;
-  let content = cart.map((item) => (
+  let content = cartItems.map((item) => (
     <CartItem
       key={item.id}
       id={item.id}
@@ -20,19 +20,19 @@ export default function Cart() {
 
   function mouseHandler() {
     setDisplay(!display);
-    console.log(cart)
   }
 
   if (display) {
     modal = <div className="cart-display">
         {content}
-        <div className="cart-total">Total&#58;&nbsp;&#163;{totalPrice}</div>
+        <div className="cart-total">Total&#58;&nbsp;{totalPrice.toLocaleString("en-GB", {style: "currency", currency: "GBP", minimumFractionDigits: 2})}</div>
+        <div className="cart-submit">GO TO CHECKOUT</div>
     </div>;
   }
 
   return (
     <div className="cart" onMouseEnter={mouseHandler} onMouseLeave={mouseHandler}>
-      <div className="cart-btn">CART ({cart.length})</div>
+      <div className="cart-btn">CART ({totalQuantity})</div>
       {modal}
     </div>
   );

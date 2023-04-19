@@ -9,16 +9,19 @@ const cartSlice = createSlice({
     name: "cart",
     initialState: {
         list: [],
-        totalPrice: 0
+        totalPrice: 0,
+        totalQuantity: 0
     },
     reducers: {
         addToCart(state, action) {
             const newItem = action.payload;
+            const price = Math.round(newItem.price * 100) / 100;
             const existingItem = state.list.find(
                 (item) => item.id === newItem.id
               );
               if (existingItem) {
                 existingItem.quantity++;
+                state.totalQuantity++;
               } else {
                 state.list.push({
                     key: newItem.id,
@@ -28,13 +31,28 @@ const cartSlice = createSlice({
                     image: newItem.image,
                     quantity: 1
                 });
+                state.totalQuantity++;
               }
-    
-            state.totalPrice += newItem.price
+            state.totalPrice += price;
+        },
+        removeFromCart(state, action) {
+          const selectedItem = action.payload;
+          const price = Math.round(selectedItem.price * 100) / 100;
+          const existingItem = state.list.find(
+            (item) => item.id === selectedItem.id
+          ); 
+          if (existingItem.quantity > 1) {
+            existingItem.quantity--;
+            state.totalQuantity--;
+          } else if (existingItem.quantity <= 1) {
+            state.list = state.list.filter((item) => item.id !== selectedItem.id);
+            state.totalQuantity--;
+          }
+          state.totalPrice = Math.round((state.totalPrice -= price) * 100) / 100;
         }
     }
 });
 
-export const { addToCart } = cartSlice.actions;
+export const { addToCart, removeFromCart } = cartSlice.actions;
 
-export default cartSlice.reducer;
+export default cartSlice;
