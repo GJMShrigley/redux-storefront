@@ -53,7 +53,7 @@ export default function ProductList() {
           rating={item.rating}
           title={item.title}
           display={item.display}
-        />
+        /> 
     ))
   } else if (productStatus === "failed") {
     content = <div className="product-item">{error}</div>
