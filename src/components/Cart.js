@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import CartItem from "./CartItem";
 
 export default function Cart() {
   const cart = useSelector((state) => state.cart);
-  const [cartItems, totalPrice, totalQuantity] = [cart.list, cart.totalPrice, cart.totalQuantity] ;
+  const [cartItems, totalPrice, totalQuantity] = [
+    cart.list,
+    cart.totalPrice,
+    cart.totalQuantity,
+  ];
   const [display, setDisplay] = useState(false);
   let modal;
   let content = cartItems.map((item) => (
@@ -23,16 +28,33 @@ export default function Cart() {
   }
 
   if (display) {
-    modal = <div className="cart-display">
+    modal = (
+      <div className="cart-display">
         {content}
-        <div className="cart-total">Total&#58;&nbsp;{totalPrice.toLocaleString("en-GB", {style: "currency", currency: "GBP", minimumFractionDigits: 2})}</div>
-        <div className="cart-submit">GO TO CHECKOUT</div>
-    </div>;
+        <div className="cart-total">
+          Total&#58;&nbsp;
+          {totalPrice.toLocaleString("en-GB", {
+            style: "currency",
+            currency: "GBP",
+            minimumFractionDigits: 2,
+          })}
+        </div>
+        <Link to="confirmation " className="cart-submit">
+          GO TO CHECKOUT
+        </Link>
+      </div>
+    );
   }
 
   return (
-    <div className="cart" onMouseEnter={mouseHandler} onMouseLeave={mouseHandler}>
-      <div className="cart-btn">CART ({totalQuantity})</div>
+    <div
+      className="cart"
+      onMouseEnter={mouseHandler}
+      onMouseLeave={mouseHandler}
+    >
+      <Link to="/cart" className="cart-btn">
+        ({totalQuantity})
+      </Link>
       {modal}
     </div>
   );

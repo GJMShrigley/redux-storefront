@@ -1,12 +1,28 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
 import { Provider } from "react-redux";
 import store from "./store";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import CartPage from "./pages/CartPage";
+import ProductPage from "./pages/ProductPage";
+import LayoutPage from "./pages/LayoutPage";
+import ShopPage from "./pages/ShopPage";
+import ConfirmationPage from "./pages/ConfirmationPage";
+import ErrorPage from "./pages/ErrorPage";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-    <Provider store={store}>
-      <App />
-    </Provider>
+  <Provider store={store}>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LayoutPage />}>
+          <Route index element={<ShopPage />} />
+          <Route path="cart" element={<CartPage />} />
+          <Route path="product" element={<ProductPage />} />
+          <Route path="confirmation" element={<ConfirmationPage />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  </Provider>
 );

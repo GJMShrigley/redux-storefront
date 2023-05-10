@@ -1,19 +1,31 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { addToCart } from "../store/cart-slice";
 
 export default function ProductItem(props) {
   const dispatch = useDispatch();
 
   function addProductToCart() {
-    dispatch(addToCart(props))
+    dispatch(addToCart(props));
   }
 
   if (props.display) {
     return (
-      <li className="product-item">
+      <Link
+        to="/product"
+        className="product-item"
+        state={{
+          title: props.title,
+          description: props.description,
+          id: props.id,
+          image: props.image,
+          price: props.price,
+          title: props.title
+        }}
+      >
         <div className="product-image-wrapper">
-        <img className="product-image" src={props.image}></img>
+          <img className="product-image" src={props.image}></img>
         </div>
         <div className="product-details">
           <div className="product-title">{props.title}</div>
@@ -26,11 +38,18 @@ export default function ProductItem(props) {
           <div className="product-description">{props.description}</div>
         </div>
         <div className="product-options">
-          <div className="product-price">{props.price.toLocaleString("en-GB", {style: "currency", currency: "GBP", minimumFractionDigits: 2})}</div>
-          <div className="product-add" onClick={addProductToCart}>ADD TO CART</div>
+          <div className="product-price">
+            {props.price.toLocaleString("en-GB", {
+              style: "currency",
+              currency: "GBP",
+              minimumFractionDigits: 2,
+            })}
+          </div>
+          <div className="product-add" onClick={addProductToCart}>
+            ADD TO CART
+          </div>
         </div>
-      </li>
+      </Link>
     );
   }
 }
-
