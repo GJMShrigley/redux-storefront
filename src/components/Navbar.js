@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addProducts, fetchProductData } from "../store/product-slice";
-// import { current } from "@reduxjs/toolkit";
 
 export default function Navbar() {
   const dispatch = useDispatch();
@@ -57,47 +56,17 @@ export default function Navbar() {
     setSearchText(e.target.value);
   }
 
-  // function search(e) {
-  //   e.preventDefault();
-  //   const inputText = searchText;
-  //   const productsCopy = JSON.parse(JSON.stringify([...products]));
-  //   let searchTypeValue = "";
-  //   const searchTerm = new RegExp(inputText, "i");
-  //   let result = "";
-
-  //   if (inputText == isNaN && searchType == "rating.rate") {
-
-  //   } else {
-  //     for (let i = 0; i < productsCopy.length; i++) {
-  //       const currentProduct = productsCopy[i];
-  //       searchTypeValue = currentProduct[searchType];
-  //       result = searchTerm.test(searchTypeValue);
-  //       console.log(searchType, typeof inputText)
-  //       if (result) {
-  //         productsCopy[i].display = true;
-  //       } else {
-  //         productsCopy[i].display = false;
-  //       }
-  //       setSearchResult(productsCopy);
-  //     }
-  //   }
-  // }
-
-  function search(e) {
-    e.preventDefault();
+  function search() {
     let inputText = searchText;
     const productsCopy = JSON.parse(JSON.stringify([...products]));
     let searchTypeValue = "";
     const searchTerm = new RegExp(inputText, "i");
     let result = "";
 
-    if (!isNaN(searchText)) {
-      inputText = parseFloat(searchText);
-    }
-
     if (isNaN(searchText) && searchType === "rating.rate") {
       console.log("print error");
     } else if (!isNaN(searchText) && searchType === "rating.rate") {
+      inputText = parseFloat(searchText);
       for (let i = 0; i < productsCopy.length; i++) {
         if (productsCopy[i].rating.rate === inputText) {
           productsCopy[i].display = true;
@@ -121,9 +90,23 @@ export default function Navbar() {
     }
   }
 
+  const handleKeyPress = useCallback((e) => {
+    const searchButton = document.querySelector(".search-btn");
+    if (e.key === "Enter") {
+      searchButton.click();
+    }
+  }, []);
+
   useEffect(() => {
     dispatch(addProducts(searchResult));
   }, [dispatch, searchResult]);
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyPress);
+    return () => {
+      document.removeEventListener("keydown", handleKeyPress);
+    };
+  }, [handleKeyPress]);
 
   return (
     <nav className="navbar">
@@ -135,7 +118,6 @@ export default function Navbar() {
         <select className="search-dropdown" onChange={changeSearchType}>
           <option className="search-option">Title</option>
           <option className="search-option">Description</option>
-          <option className="search-option">Price</option>
           <option className="search-option">Rating</option>
         </select>
         <select className="sort-dropdown" onChange={changeSort}>

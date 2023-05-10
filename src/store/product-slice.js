@@ -48,18 +48,8 @@ export const fetchProductData = createAsyncThunk("products/fetchProductData", as
     return res;
   }});
 
-  // if (category === 'all') {
-  //   const res = await fetch("https://fakestoreapi.com/products")
-  //   .then((res) => res.json())
-  //   return res;
-  // }  else {
-  //   const res = await fetch(`https://fakestoreapi.com/products/category/${category}`)
-  //   .then((res)=> res.json())
-  //   return res;
-  // }});
-
 export const selectProducts = (state) => state.products;
 
 export const { addProducts } = productSlice.actions;
 
-export default productSlice.reducer;
+export default productSlice;

@@ -3,35 +3,51 @@ import ProductItem from "./ProductItem";
 import { useSelector } from "react-redux";
 
 export default function ProductList() {
-  const products = useSelector(state => state.products.products);
-  const productStatus = useSelector(state => state.products.status);
-  const error = useSelector(state => state.products.error);
+  const products = useSelector((state) => state.products.products);
+  const productStatus = useSelector((state) => state.products.status);
+  const error = useSelector((state) => state.products.error);
   const [productsPerPage, setProductsPerPage] = useState(5);
   const [page, setPage] = useState(1);
-  const [displayedProducts, setDisplayedProducts] = useState([]);
+  const [selectedProducts, setSelectedProducts] = useState([]);
+  const [productsOnPage, setProductsOnPage] = useState([]);
+
   let content;
 
-  //update products on page, dynamically generate page numbers
   useEffect(() => {
-    const initialProducts = products.slice(((page * productsPerPage) - productsPerPage), (page * productsPerPage));
+    //search through copy of products array for products with display set to true, update State
+    let productsCopy = [];
+    for (let i = 0; i < products.length; i++) {
+      if (products[i].display === true) {
+        productsCopy.push(products[i]);
+      }
+    }
+    setSelectedProducts(productsCopy);
+    setPage(1)
+  }, [products]);
+
+  useEffect(() => {
+    //divide selectedProducts into pages based on productsPerPage value, update State
+    const visibleProducts = selectedProducts.slice(
+      page * productsPerPage - productsPerPage,
+      page * productsPerPage
+    );
+    setProductsOnPage(visibleProducts);
+
+    //generate page numbers
     const pageNav = document.querySelector(".page-nav");
     pageNav.textContent = "";
-    setDisplayedProducts(initialProducts);
-
-    for (let i = 0; i < (products.length / productsPerPage); i++) {
+    for (let i = 0; i < selectedProducts.length / productsPerPage; i++) {
       const pageBtn = document.createElement("div");
-      pageBtn.classList.add("page-btn")
-      pageBtn.innerHTML = (i + 1);
+      pageBtn.classList.add("page-btn");
+      pageBtn.innerHTML = i + 1;
       pageBtn.onclick = selectPage;
       pageNav.appendChild(pageBtn);
     }
-  }, [products, productsPerPage])
+  }, [selectedProducts, page]);
 
   //select page number
   function selectPage(e) {
-    const selectedPage = e.target.innerHTML;
-    const productSelection = products.slice(((selectedPage * productsPerPage) - productsPerPage), (selectedPage * productsPerPage));
-    setDisplayedProducts(productSelection);
+    setPage(parseFloat(e.target.innerHTML));
   }
 
   //change number of products displayed on page
@@ -41,34 +57,35 @@ export default function ProductList() {
 
   //populate product list
   if (productStatus === "loading") {
-    content = <div className="product-item">LOADING PRODUCTS</div>
+    content = <div className="product-item">LOADING PRODUCTS</div>;
   } else if (productStatus === "succeeded") {
-    content = displayedProducts.map(item => (
-        <ProductItem
-          key={item.id}
-          description={item.description}
-          id={item.id}
-          image={item.image}
-          price={item.price}
-          rating={item.rating}
-          title={item.title}
-          display={item.display}
-        /> 
-    ))
+    content = productsOnPage.map((item) => (
+      <ProductItem
+        key={item.id}
+        description={item.description}
+        id={item.id}
+        image={item.image}
+        price={item.price}
+        rating={item.rating}
+        title={item.title}
+        display={item.display}
+      />
+    ));
   } else if (productStatus === "failed") {
-    content = <div className="product-item">{error}</div>
+    content = <div className="product-item">{error}</div>;
   }
 
-  return <div>
-    <ul className="product-list">{content}</ul>
-    <div className="page-buttons">
-    <nav className="page-nav"></nav>
-    <select className="product-dropdown" onChange={changeNumber}>
-      <option className="product-number">5</option>
-      <option className="product-number">10</option>
-      <option className="product-number">15</option>
-    </select>
+  return (
+    <div>
+      <ul className="product-list">{content}</ul>
+      <div className="page-buttons">
+        <nav className="page-nav"></nav>
+        <select className="product-dropdown" onChange={changeNumber}>
+          <option className="product-number">5</option>
+          <option className="product-number">10</option>
+          <option className="product-number">15</option>
+        </select>
+      </div>
     </div>
-
-    </div>;
+  );
 }
