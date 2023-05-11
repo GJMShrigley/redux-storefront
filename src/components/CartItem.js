@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import {addToCart, removeFromCart } from "../store/cart-slice";
+import { Link } from "react-router-dom";
+import { addToCart, removeFromCart } from "../store/cart-slice";
 
 export default function CartItem(props) {
   const dispatch = useDispatch();
@@ -14,7 +15,20 @@ export default function CartItem(props) {
   }
 
   return (
-    <li className="cart-item">
+    <Link
+        to="/product"
+        className="cart-item"
+        state={{
+          title: props.title,
+          description: props.description,
+          id: props.id,
+          image: props.image,
+          price: props.price,
+          title: props.title,
+          ratingScore: props.ratingScore,
+          ratingCount: props.ratingCount
+        }}
+      >
       <img className="cart-item-image" src={props.image}></img>
       <div className="cart-item-details">
         <div className="cart-item-title">{props.title}</div>
@@ -27,6 +41,6 @@ export default function CartItem(props) {
           <div className="cart-item-remove" onClick={removeProductFromCart}>REMOVE</div>
         </div>
       </div>
-    </li>
+      </Link>
   );
 }

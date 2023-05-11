@@ -19,6 +19,8 @@ export default function Cart() {
       image={item.image}
       price={item.price}
       title={item.title}
+      ratingScore={item.ratingScore}
+      ratingCount={item.ratingCount}
       quantity={item.quantity}
     />
   ));
@@ -39,7 +41,7 @@ export default function Cart() {
             minimumFractionDigits: 2,
           })}
         </div>
-        <Link to="confirmation " className="cart-submit">
+        <Link to="/confirmation" className="cart-submit">
           GO TO CHECKOUT
         </Link>
       </div>
@@ -53,7 +55,7 @@ export default function Cart() {
       onMouseLeave={mouseHandler}
     >
       <Link to="/cart" className="cart-btn">
-        ({totalQuantity})
+        CART &#40;{totalQuantity}&#41;
       </Link>
       {modal}
     </div>

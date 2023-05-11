@@ -4,9 +4,11 @@ import { Link } from "react-router-dom";
 import { addToCart } from "../store/cart-slice";
 
 export default function ProductItem(props) {
+  
   const dispatch = useDispatch();
 
-  function addProductToCart() {
+  function addProductToCart(e) {
+    e.preventDefault();
     dispatch(addToCart(props));
   }
 
@@ -21,7 +23,9 @@ export default function ProductItem(props) {
           id: props.id,
           image: props.image,
           price: props.price,
-          title: props.title
+          title: props.title,
+          ratingScore: props.rating.rate,
+          ratingCount: props.rating.count
         }}
       >
         <div className="product-image-wrapper">

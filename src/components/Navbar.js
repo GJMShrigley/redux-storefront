@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { addProducts, fetchProductData } from "../store/product-slice";
 
 export default function Navbar() {
@@ -113,7 +114,9 @@ export default function Navbar() {
       <div className="navbar-search">
         <input className="search-input" onChange={setText}></input>
         <button className="search-btn" onClick={search}>
-          Go
+          <Link to="/">
+            GO
+          </Link>
         </button>
         <select className="search-dropdown" onChange={changeSearchType}>
           <option className="search-option">Title</option>
@@ -125,23 +128,25 @@ export default function Navbar() {
           <option className="sort-option">Desc</option>
         </select>
       </div>
-      <ul className="navbar-list">
-        <button className="navbar-item" onClick={changeCategory}>
-          All
-        </button>
-        <button className="navbar-item" onClick={changeCategory}>
-          Electronics
-        </button>
-        <button className="navbar-item" onClick={changeCategory}>
-          Jewelery
-        </button>
-        <button className="navbar-item" onClick={changeCategory}>
-          Men's Clothing
-        </button>
-        <button className="navbar-item" onClick={changeCategory}>
-          Women's Clothing
-        </button>
-      </ul>
+      <Link to="/">
+        <ul className="navbar-list">
+          <button className="navbar-item" onClick={changeCategory}>
+            All
+          </button>
+          <button className="navbar-item" onClick={changeCategory}>
+            Electronics
+          </button>
+          <button className="navbar-item" onClick={changeCategory}>
+            Jewelery
+          </button>
+          <button className="navbar-item" onClick={changeCategory}>
+            Men's Clothing
+          </button>
+          <button className="navbar-item" onClick={changeCategory}>
+            Women's Clothing
+          </button>
+        </ul>
+      </Link>
     </nav>
   );
 }
