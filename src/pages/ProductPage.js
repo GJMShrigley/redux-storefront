@@ -1,36 +1,62 @@
 import "../App.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { addToCart } from "../store/cart-slice";
 
 function ProductPage() {
-  const dispatch = useDispatch();
   const location = useLocation();
-  const { title, description, price, ratingScore, ratingCount, image, id } =
-    location.state;
-    console.log(location.state)
+  const productId = location.state.id;
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.products.products);
+  const [selectedProduct, setSelectedProduct] = useState({
+    price: 0,
+    image: "",
+    rating: { rate: 0, count: 0 },
+    description: "",
+    title: "",
+  });
+
+  useEffect(() => {
+    for (let i = 0; i < products.length; i++) {
+      if (products[i].id === productId) {
+        setSelectedProduct(products[i]);
+      }
+    }
+  }, [products, location, productId]);
 
   function addProductToCart() {
-    dispatch(addToCart(location.state));
+    for (let i = 0; i < products.length; i++) {
+      if (products[i].id === productId) {
+        dispatch(addToCart(products[i]))
+      }
+    }
   }
-
+  
   return (
     <div className="product-page">
-      <img className="product-page__item-image" src={image}></img>
-      <div className="product-page__item-title">{title}</div>
+      <img
+        className="product-page__item-image"
+        src={selectedProduct.image}
+        alt="a photograph of the product"
+      ></img>
+      <div className="product-page__item-title">{selectedProduct.title}</div>
       <div className="product-page__details">
         <div className="product-page__rating">
-          <div className="product-page__rating-score">{ratingScore}</div>
+          <div className="product-page__rating-score">
+            {selectedProduct.rating.rate}
+          </div>
           <div className="product-page__rating-number">
-            &#40;{ratingCount}&#41;
+            &#40;{selectedProduct.rating.count}&#41;
           </div>
         </div>
-        <div className="product-page__description">{description}</div>
+        <div className="product-page__description">
+          {selectedProduct.description}
+        </div>
       </div>
       <div className="product-page__options">
         <div className="product-page__price">
-          {price.toLocaleString("en-GB", {
+          {selectedProduct.price.toLocaleString("en-GB", {
             style: "currency",
             currency: "GBP",
             minimumFractionDigits: 2,

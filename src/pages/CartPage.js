@@ -1,14 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import CartItem from "../components/CartItem";
 
 function CartPage() {
   const cart = useSelector((state) => state.cart);
-  const [cartItems, totalPrice, totalQuantity] = [
+  const [cartItems, totalPrice] = [
     cart.list,
     cart.totalPrice,
-    cart.totalQuantity,
   ];
 
   let content = cartItems.map((item) => (

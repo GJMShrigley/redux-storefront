@@ -9,7 +9,6 @@ const cartSlice = createSlice({
     },
     reducers: {
         addToCart(state, action) {
-          console.log(action.payload)
             const newItem = action.payload;
             const price = Math.round(newItem.price * 100) / 100;
             const existingItem = state.list.find(

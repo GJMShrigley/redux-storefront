@@ -1,49 +1,56 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { addToCart } from "../store/cart-slice";
 
 export default function ProductItem(props) {
-  
   const dispatch = useDispatch();
+  const products = useSelector((state) => state.products.products);
+  const productId = props.id;
+  const [selectedProduct, setSelectedProduct] = useState({});
+  
+  useEffect(() => {
+    for (let i = 0; i < products.length; i++) {
+      if (products[i].id === productId) {
+        setSelectedProduct(products[i]);
+      }
+    }
+  }, [products, productId])
 
   function addProductToCart(e) {
     e.preventDefault();
-    dispatch(addToCart(props));
+    for (let i = 0; i < products.length; i++) {
+      if (products[i].id === productId) {
+        dispatch(addToCart(products[i]))
+      }
+    }
   }
-
-  if (props.display) {
+  
+  if (selectedProduct.display) {
     return (
       <Link
-        to="/product"
+        to={`/product/${productId}`}
         className="product-item"
         state={{
-          title: props.title,
-          description: props.description,
-          id: props.id,
-          image: props.image,
-          price: props.price,
-          title: props.title,
-          ratingScore: props.rating.rate,
-          ratingCount: props.rating.count
+          id: selectedProduct.id,
         }}
       >
         <div className="product-image-wrapper">
-          <img className="product-image" src={props.image}></img>
+          <img className="product-image" src={selectedProduct.image} alt="a photograph of the product"></img>
         </div>
         <div className="product-details">
-          <div className="product-title">{props.title}</div>
+          <div className="product-title">{selectedProduct.title}</div>
           <div className="product-rating">
-            <div className="product-rating-score">{props.rating.rate}</div>
+            <div className="product-rating-score">{selectedProduct.rating.rate}</div>
             <div className="product-rating-number">
-              &#40;{props.rating.count}&#41;
+              &#40;{selectedProduct.rating.count}&#41;
             </div>
           </div>
-          <div className="product-description">{props.description}</div>
+          <div className="product-description">{selectedProduct.description}</div>
         </div>
         <div className="product-options">
           <div className="product-price">
-            {props.price.toLocaleString("en-GB", {
+            {selectedProduct.price.toLocaleString("en-GB", {
               style: "currency",
               currency: "GBP",
               minimumFractionDigits: 2,

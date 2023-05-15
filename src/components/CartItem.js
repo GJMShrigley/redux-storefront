@@ -1,35 +1,39 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { addToCart, removeFromCart } from "../store/cart-slice";
 
 export default function CartItem(props) {
   const dispatch = useDispatch();
+  const products = useSelector((state) => state.products.products);
+  const productId = props.id;
+  
 
   function removeProductFromCart() {
-    dispatch(removeFromCart(props))
+    for (let i = 0; i < products.length; i++) {
+      if (products[i].id === productId) {
+        dispatch(removeFromCart(products[i]))
+      }
+    }
   }
 
   function addProductToCart() {
-    dispatch(addToCart(props))
+    for (let i = 0; i < products.length; i++) {
+      if (products[i].id === productId) {
+        dispatch(addToCart(products[i]))
+      }
+    }
   }
 
   return (
     <Link
-        to="/product"
+    to={`/product/${productId}`}
         className="cart-item"
         state={{
-          title: props.title,
-          description: props.description,
-          id: props.id,
-          image: props.image,
-          price: props.price,
-          title: props.title,
-          ratingScore: props.ratingScore,
-          ratingCount: props.ratingCount
+          id: productId,
         }}
       >
-      <img className="cart-item-image" src={props.image}></img>
+      <img className="cart-item-image" src={props.image} alt="a photograph of the product"></img>
       <div className="cart-item-details">
         <div className="cart-item-title">{props.title}</div>
         <div className="cart-item-price">{props.price.toLocaleString("en-GB", {style: "currency", currency: "GBP", minimumFractionDigits: 2})}</div>

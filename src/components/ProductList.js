@@ -62,13 +62,13 @@ export default function ProductList() {
     content = productsOnPage.map((item) => (
       <ProductItem
         key={item.id}
-        description={item.description}
+        // description={item.description}
         id={item.id}
-        image={item.image}
-        price={item.price}
-        rating={item.rating}
-        title={item.title}
-        display={item.display}
+        // image={item.image}
+        // price={item.price}
+        // rating={item.rating}
+        // title={item.title}
+        // display={item.display}
       />
     ));
   } else if (productStatus === "failed") {
