@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ProductItem from "./ProductItem";
 import { useSelector } from "react-redux";
+import "../display.css";
 
 export default function ProductList() {
   const products = useSelector((state) => state.products.products);
@@ -43,7 +44,7 @@ export default function ProductList() {
       pageBtn.onclick = selectPage;
       pageNav.appendChild(pageBtn);
     }
-  }, [selectedProducts, page]);
+  }, [selectedProducts, page, productsPerPage]);
 
   //select page number
   function selectPage(e) {
@@ -62,13 +63,7 @@ export default function ProductList() {
     content = productsOnPage.map((item) => (
       <ProductItem
         key={item.id}
-        // description={item.description}
         id={item.id}
-        // image={item.image}
-        // price={item.price}
-        // rating={item.rating}
-        // title={item.title}
-        // display={item.display}
       />
     ));
   } else if (productStatus === "failed") {
@@ -80,10 +75,10 @@ export default function ProductList() {
       <ul className="product-list">{content}</ul>
       <div className="page-buttons">
         <nav className="page-nav"></nav>
-        <select className="product-dropdown" onChange={changeNumber}>
-          <option className="product-number">5</option>
-          <option className="product-number">10</option>
-          <option className="product-number">15</option>
+        <select className="page-dropdown" onChange={changeNumber}>
+          <option className="page-quantity">5</option>
+          <option className="page-quantity">10</option>
+          <option className="page-quantity">15</option>
         </select>
       </div>
     </div>

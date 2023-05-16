@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { addProducts, fetchProductData } from "../store/product-slice";
+import "../navigation.css";
 
 export default function Navbar() {
   const dispatch = useDispatch();
@@ -114,14 +115,12 @@ export default function Navbar() {
       <div className="navbar-search">
         <input className="search-input" onChange={setText}></input>
         <button className="search-btn" onClick={search}>
-          <Link to="/">
-            GO
-          </Link>
+          <Link to="/">SEARCH</Link>
         </button>
         <select className="search-dropdown" onChange={changeSearchType}>
-          <option className="search-option">Title</option>
-          <option className="search-option">Description</option>
-          <option className="search-option">Rating</option>
+            <option className="search-option">Title</option>
+            <option className="search-option">Description</option>
+            <option className="search-option">Rating</option>
         </select>
         <select className="sort-dropdown" onChange={changeSort}>
           <option className="sort-option">Asc</option>

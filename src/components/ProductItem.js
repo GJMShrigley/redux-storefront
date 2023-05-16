@@ -56,7 +56,7 @@ export default function ProductItem(props) {
               minimumFractionDigits: 2,
             })}
           </div>
-          <div className="product-add" onClick={addProductToCart}>
+          <div className="product-add button" onClick={addProductToCart}>
             ADD TO CART
           </div>
         </div>

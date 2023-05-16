@@ -1,6 +1,6 @@
 import React from 'react';
 import Cart from './Cart';
-import { Outlet, Link } from "react-router-dom";
+import "../header.css";
 
 function Header() {
 return (
