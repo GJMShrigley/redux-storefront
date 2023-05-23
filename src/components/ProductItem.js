@@ -8,24 +8,24 @@ export default function ProductItem(props) {
   const products = useSelector((state) => state.products.products);
   const productId = props.id;
   const [selectedProduct, setSelectedProduct] = useState({});
-  
+
   useEffect(() => {
     for (let i = 0; i < products.length; i++) {
       if (products[i].id === productId) {
         setSelectedProduct(products[i]);
       }
     }
-  }, [products, productId])
+  }, [products, productId]);
 
   function addProductToCart(e) {
     e.preventDefault();
     for (let i = 0; i < products.length; i++) {
       if (products[i].id === productId) {
-        dispatch(addToCart(products[i]))
+        dispatch(addToCart(products[i]));
       }
     }
   }
-  
+
   if (selectedProduct.display) {
     return (
       <Link
@@ -36,28 +36,38 @@ export default function ProductItem(props) {
         }}
       >
         <div className="product-image-wrapper">
-          <img className="product-image" src={selectedProduct.image} alt="a photograph of the product"></img>
+          <img
+            className="product-image"
+            src={selectedProduct.image}
+            alt="a photograph of the product"
+          ></img>
         </div>
-        <div className="product-details">
-          <div className="product-title">{selectedProduct.title}</div>
-          <div className="product-rating">
-            <div className="product-rating-score">{selectedProduct.rating.rate}</div>
-            <div className="product-rating-number">
-              &#40;{selectedProduct.rating.count}&#41;
+        <div className="product-text-container">
+          <div className="product-details">
+            <div className="product-title">{selectedProduct.title}</div>
+            <div className="product-rating">
+              <div className="product-rating-score">
+                {selectedProduct.rating.rate}
+              </div>
+              <div className="product-rating-number">
+                &#40;{selectedProduct.rating.count}&#41;
+              </div>
+            </div>
+            <div className="product-description">
+              {selectedProduct.description}
             </div>
           </div>
-          <div className="product-description">{selectedProduct.description}</div>
-        </div>
-        <div className="product-options">
-          <div className="product-price">
-            {selectedProduct.price.toLocaleString("en-GB", {
-              style: "currency",
-              currency: "GBP",
-              minimumFractionDigits: 2,
-            })}
-          </div>
-          <div className="product-add button" onClick={addProductToCart}>
-            ADD TO CART
+          <div className="product-options">
+            <div className="product-price">
+              {selectedProduct.price.toLocaleString("en-GB", {
+                style: "currency",
+                currency: "GBP",
+                minimumFractionDigits: 2,
+              })}
+            </div>
+            <div className="product-add button" onClick={addProductToCart}>
+              ADD TO CART
+            </div>
           </div>
         </div>
       </Link>

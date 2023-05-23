@@ -66,7 +66,7 @@ export default function Navbar() {
     let result = "";
 
     if (isNaN(searchText) && searchType === "rating.rate") {
-      console.log("print error");
+   
     } else if (!isNaN(searchText) && searchType === "rating.rate") {
       inputText = parseFloat(searchText);
       for (let i = 0; i < productsCopy.length; i++) {
@@ -114,7 +114,7 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="navbar-search">
         <input className="search-input" onChange={setText}></input>
-        <button className="search-btn" onClick={search}>
+        <button className="search-btn button" onClick={search}>
           <Link to="/">SEARCH</Link>
         </button>
         <select className="search-dropdown" onChange={changeSearchType}>

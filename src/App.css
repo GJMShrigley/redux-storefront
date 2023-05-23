@@ -23,17 +23,14 @@
   font-family: Neue Plak, sans-serif;
   text-decoration: none;
   letter-spacing: .1rem;
-  /* overflow-x: hidden; */
-}
-
-body {
-  overflow-x: hidden;
 }
 
 .button {
   border: 1px solid #eee;
   border-radius: 100px;
-  width: 10vw;
+  width: fit-content;
+  min-width: 10rem;
+  padding: 0 .5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -47,54 +44,4 @@ body {
   background: #b3ffcc;
 }
 
-.cart {
-  /* width: 5rem;
-  height: 2rem; */
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  z-index: 10;
-}
-
-.cart-btn {
-  width: 5rem;
-  height: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  background-color: #888;
-  cursor: pointer;
-}
-
-.cart-display {
-  border: 1px solid #000;
-  border-radius: 8px;
-  width: auto;
-  min-height: 90vh;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  grid-gap: .5rem;
-  background-color: #fff;
-  overflow-y: auto;
-}
-
-.cart-item {
-  margin-top: 1rem;
-  border-bottom: 1px solid #000;
-  width: 100%;
-  height: 10vh;
-  display: flex;
-}
-
-.cart-item-quantity-container {
-  display: flex;
-  justify-content: space-between;
-}
-
-.cart-total {
-  font-weight: 700;
-}
 

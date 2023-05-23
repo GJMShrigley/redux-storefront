@@ -1,0 +1,23 @@
+.error-page {
+    height: 84vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(179, 255, 229, 1) 90%);
+}
+
+.error-page-container {
+    height: 42vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.error-page-title {
+    margin-bottom: 1rem;
+}
+
+.error-page-subtitle {
+    margin-bottom: 1rem;
+    color: #999;
+}

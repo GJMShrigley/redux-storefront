@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import ProductItem from "./ProductItem";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import "../display.css";
+import "../loadingPage.css";
+import "../errorPage.css";
 
 export default function ProductList() {
   const products = useSelector((state) => state.products.products);
@@ -23,7 +26,7 @@ export default function ProductList() {
       }
     }
     setSelectedProducts(productsCopy);
-    setPage(1)
+    setPage(1);
   }, [products]);
 
   useEffect(() => {
@@ -58,16 +61,27 @@ export default function ProductList() {
 
   //populate product list
   if (productStatus === "loading") {
-    content = <div className="product-item">LOADING PRODUCTS</div>;
+    content = (
+      <div className="loading-page">
+        <div className="loading"></div>
+      </div>
+    );
   } else if (productStatus === "succeeded") {
     content = productsOnPage.map((item) => (
-      <ProductItem
-        key={item.id}
-        id={item.id}
-      />
+      <ProductItem key={item.id} id={item.id} />
     ));
   } else if (productStatus === "failed") {
-    content = <div className="product-item">{error}</div>;
+    content = (
+      <div className="error-page">
+        <div className="error-page-container">
+          <h1 className="error-page-title">AN ERROR HAS OCCURRED</h1>
+          <h2 className="error-page-subtitle">{error}</h2>
+          <Link to="/" className="link-home button">
+            RETURN HOME
+          </Link>
+        </div>
+      </div>
+    );
   }
 
   return (

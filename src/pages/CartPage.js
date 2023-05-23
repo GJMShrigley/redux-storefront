@@ -1,7 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import CartItem from "../components/CartItem";
+import CartPageItem from "../components/CartPageItem";
+import "../cart-page.css"
 
 function CartPage() {
   const cart = useSelector((state) => state.cart);
@@ -11,7 +12,7 @@ function CartPage() {
   ];
 
   let content = cartItems.map((item) => (
-    <CartItem
+    <CartPageItem
       key={item.id}
       id={item.id}
       image={item.image}
@@ -24,9 +25,9 @@ function CartPage() {
   ));
 
   let cartList = (
-    <div className="cart-page__display">
+    <div className="cart-page__list">
       {content}
-      <div className="cart-total">
+      <div className="cart-page-total">
         Total&#58;&nbsp;
         {totalPrice.toLocaleString("en-GB", {
           style: "currency",
@@ -34,18 +35,20 @@ function CartPage() {
           minimumFractionDigits: 2,
         })}
       </div>
+      <div className="cart-page-buttons-container">
+      <Link to="/" className="link-home button">
+        RETURN HOME
+      </Link>
+      <Link to="/confirmation" className="cart-submit button">
+          GO TO CHECKOUT
+        </Link>
+        </div>
     </div>
   );
 
   return (
     <div className="cart-page">
       {cartList}
-      <Link to="/" className="link-home">
-        RETURN HOME
-      </Link>
-      <Link to="/confirmation" className="cart-submit">
-          GO TO CHECKOUT
-        </Link>
     </div>
   );
 }

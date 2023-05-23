@@ -1,8 +1,8 @@
-import "../App.css";
 import React, { useEffect, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart } from "../store/cart-slice";
+import "../productPage.css";
 
 function ProductPage() {
   const location = useLocation();
@@ -28,7 +28,7 @@ function ProductPage() {
   function addProductToCart() {
     for (let i = 0; i < products.length; i++) {
       if (products[i].id === productId) {
-        dispatch(addToCart(products[i]))
+        dispatch(addToCart(products[i]));
       }
     }
   }
@@ -40,8 +40,8 @@ function ProductPage() {
         src={selectedProduct.image}
         alt="a photograph of the product"
       ></img>
-      <div className="product-page__item-title">{selectedProduct.title}</div>
       <div className="product-page__details">
+        <div className="product-page__item-title">{selectedProduct.title}</div>
         <div className="product-page__rating">
           <div className="product-page__rating-score">
             {selectedProduct.rating.rate}
@@ -53,8 +53,7 @@ function ProductPage() {
         <div className="product-page__description">
           {selectedProduct.description}
         </div>
-      </div>
-      <div className="product-page__options">
+        <div className="product-page__options">
         <div className="product-page__price">
           {selectedProduct.price.toLocaleString("en-GB", {
             style: "currency",
@@ -62,12 +61,13 @@ function ProductPage() {
             minimumFractionDigits: 2,
           })}
         </div>
+        <div className="product-page__add button" onClick={addProductToCart}>
+          ADD TO CART
+        </div>
       </div>
-      <div className="product-page__add" onClick={addProductToCart}>
-        ADD TO CART
       </div>
-      ;
-      <Link to="/" className="link-home">
+
+      <Link to="/" className="link-home button">
         RETURN TO LISTINGS
       </Link>
     </div>
