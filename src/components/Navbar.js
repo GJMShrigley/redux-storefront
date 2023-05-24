@@ -66,7 +66,7 @@ export default function Navbar() {
     let result = "";
 
     if (isNaN(searchText) && searchType === "rating.rate") {
-   
+      //Do nothing
     } else if (!isNaN(searchText) && searchType === "rating.rate") {
       inputText = parseFloat(searchText);
       for (let i = 0; i < productsCopy.length; i++) {
@@ -127,7 +127,7 @@ export default function Navbar() {
           <option className="sort-option">Desc</option>
         </select>
       </div>
-      <Link to="/">
+      <Link className="home-link" to="/">
         <ul className="navbar-list">
           <button className="navbar-item" onClick={changeCategory}>
             All

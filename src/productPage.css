@@ -1,8 +1,11 @@
 .product-page {
+  width: 100vw;
+  height: 76vh;
   padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: auto;
 }
 
 .product-page__item-image {

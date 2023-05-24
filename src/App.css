@@ -28,8 +28,6 @@
 .button {
   border: 1px solid #eee;
   border-radius: 100px;
-  width: fit-content;
-  min-width: 10rem;
   padding: 0 .5rem;
   display: flex;
   align-items: center;
@@ -42,6 +40,27 @@
 
 .button:hover {
   background: #b3ffcc;
+}
+
+@media (orientation: portrait) and (max-width: 300px) { 
+
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (orientation: portrait) and (min-width: 400px) { 
+
+  html {
+    font-size: 21px;
+  }
+}
+
+@media (orientation: portrait) and (min-width: 700px) { 
+
+  html {
+    font-size: 35px;
+  }
 }
 
 

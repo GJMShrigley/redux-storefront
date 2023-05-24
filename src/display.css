@@ -7,7 +7,7 @@
 .product-list {
   width: auto;
   height: auto;
-  min-height: 75vh;
+  /* min-height: 75vh; */
   overflow: hidden;
 }
 
@@ -17,7 +17,6 @@
   border-radius: 8px;
   padding: 0.2rem;
   width: 95%;
-  height: 15vh;
   display: flex;
   text-decoration: none;
   background: #fff;
@@ -104,7 +103,7 @@
 }
 
 .product-add {
-  width: 15rem;
+  width: fit-content;
 }
 
 .page-buttons {

@@ -58,6 +58,7 @@ export default function CartPageItem(props) {
       </div>
       <div className="cart-page-item-details">
         <div className="cart-page-item-title">{selectedProduct.title}</div>
+        <div className="cart-page-item-quantity-container">
         <div className="cart-page-item-price">
           {selectedProduct.price.toLocaleString("en-GB", {
             style: "currency",
@@ -65,12 +66,14 @@ export default function CartPageItem(props) {
             minimumFractionDigits: 2,
           })}
         </div>
-        <div className="cart-page-item-quantity-container">
           <div className="cart-page-item-quantity">
             Quantity&#58;&nbsp;{selectedProduct.quantity}
           </div>
           <div className="cart-page-item-buttons-container">
-            <div className="cart-page-item-add button" onClick={addProductToCart}>
+            <div
+              className="cart-page-item-add button"
+              onClick={addProductToCart}
+            >
               ADD
             </div>
             <div
