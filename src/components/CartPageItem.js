@@ -44,40 +44,40 @@ export default function CartPageItem(props) {
   return (
     <Link
       to={`/product/${productId}`}
-      className="cart-page-item"
+      className="cart-item"
       state={{
         id: productId,
       }}
     >
-      <div className="cart-page-item-image-wrapper">
+      <div className="cart-item-image-wrapper">
         <img
-          className="cart-page-item-image"
+          className="cart-item-image"
           src={selectedProduct.image}
           alt="a photograph of the product"
         ></img>
       </div>
-      <div className="cart-page-item-details">
-        <div className="cart-page-item-title">{selectedProduct.title}</div>
-        <div className="cart-page-item-quantity-container">
-        <div className="cart-page-item-price">
+      <div className="cart-item-details">
+        <div className="cart-item-title">{selectedProduct.title}</div>
+        <div className="cart-item-quantity-container">
+        <div className="cart-item-price">
           {selectedProduct.price.toLocaleString("en-GB", {
             style: "currency",
             currency: "GBP",
             minimumFractionDigits: 2,
           })}
         </div>
-          <div className="cart-page-item-quantity">
+          <div className="cart-item-quantity">
             Quantity&#58;&nbsp;{selectedProduct.quantity}
           </div>
-          <div className="cart-page-item-buttons-container">
+          <div className="cart-item-buttons-container">
             <div
-              className="cart-page-item-add button"
+              className="cart-item-add button"
               onClick={addProductToCart}
             >
               ADD
             </div>
             <div
-              className="cart-page-item-remove button"
+              className="cart-item-remove button"
               onClick={removeProductFromCart}
             >
               REMOVE

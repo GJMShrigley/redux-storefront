@@ -85,7 +85,7 @@ export default function ProductList() {
   }
 
   return (
-    <div>
+    <div className="product-list-wrapper">
       <ul className="product-list">{content}</ul>
       <div className="page-buttons">
         <nav className="page-nav"></nav>

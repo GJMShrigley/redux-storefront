@@ -15,4 +15,16 @@
     animation:s3 1s infinite linear;
 }
 
+@media (orientation: landscape) {
+    .loading-page {
+        height: 70vh;
+    }
+}
+
+@media (orientation: landscape) and (min-height: 500px) {
+    .loading-page {
+      height: 75vh;
+    } 
+  }
+
 @keyframes s3 {to{transform: rotate(1turn)}}

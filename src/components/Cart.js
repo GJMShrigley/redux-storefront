@@ -14,7 +14,7 @@ export default function Cart() {
   const [display, setDisplay] = useState(false);
   let modal;
   let content = cartItems.map((item) => (
-    <CartItem key={item.id} id={item.id} />
+    <CartItem key={item.id} id={item.id} removeDisplay={mouseHandler} />
   ));
 
   function mouseHandler() {
@@ -36,10 +36,10 @@ export default function Cart() {
           })}
         </div>
         <div className="cart-buttons-container">
-          <Link to="/cart" className="cart-go-to button">
+          <Link to="/cart" className="cart-go-to button" onClick={mouseHandler}>
             GO TO CART
           </Link>
-          <Link to="/confirmation" className="cart-submit button">
+          <Link to="/confirmation" className="cart-submit button" onClick={mouseHandler}>
             CHECKOUT
           </Link>
         </div>

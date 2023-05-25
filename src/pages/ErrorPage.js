@@ -4,7 +4,6 @@ import "../errorPage.css";
 
 function ErrorPage() {
   return (
-    <div>
       <div className="error-page">
         <div className="error-page-container">
           <h1 className="error-page-title">THE PAGE YOU ARE LOOKING FOR DOES NOT EXIST</h1>
@@ -13,7 +12,6 @@ function ErrorPage() {
           </Link>
         </div>
       </div>
-    </div>
   );
 }
 

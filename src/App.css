@@ -63,4 +63,37 @@
   }
 }
 
+@media (orientation: landscape) and (max-height: 300px) { 
+
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (orientation: landscape) and (min-height: 300px) { 
+
+  html {
+    font-size: 15px;
+  }
+}
+
+@media (orientation: landscape) and (min-height: 300px) { 
+
+  html {
+    font-size: 15px;
+  }
+
+  .App {
+    height: 100Vh;
+  }
+}
+
+@media (orientation: landscape) and (min-height: 600px) { 
+
+  html {
+    font-size: 20px;
+  }
+
+}
+
 

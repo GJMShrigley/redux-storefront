@@ -49,6 +49,7 @@ export default function CartItem(props) {
       state={{
         id: productId,
       }}
+      onClick={props.removeDisplay}
     >
       <div className="cart-item-image-wrapper">
         <img
@@ -59,6 +60,7 @@ export default function CartItem(props) {
       </div>
       <div className="cart-item-details">
         <div className="cart-item-title">{selectedProduct.title}</div>
+        <div className="cart-item-quantity-container">
         <div className="cart-item-price">
           {selectedProduct.price.toLocaleString("en-GB", {
             style: "currency",
@@ -66,12 +68,14 @@ export default function CartItem(props) {
             minimumFractionDigits: 2,
           })}
         </div>
-        <div className="cart-item-quantity-container">
           <div className="cart-item-quantity">
             Quantity&#58;&nbsp;{selectedProduct.quantity}
           </div>
           <div className="cart-item-buttons-container">
-            <div className="cart-item-add button" onClick={addProductToCart}>
+            <div
+              className="cart-item-add button"
+              onClick={addProductToCart}
+            >
               ADD
             </div>
             <div

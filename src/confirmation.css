@@ -30,17 +30,24 @@
 
 @media (orientation: landscape) {
   .confirmation-page {
-    height: 84vh;
+    height: 64.7vh;
+    padding: 1rem;
   }
 
   .confirmation-page-title {
     margin-bottom: 1rem;
-    text-align: left;
+    text-align: center;
   }
 
   .confirmation-page-subtitle {
     margin-bottom: 1rem;
-    text-align: left;
+    text-align: center;
     color: #999;
   }
+}
+
+@media (orientation: landscape) and (min-height: 500px) {
+  .confirmation-page {
+    height: 73%;
+  } 
 }

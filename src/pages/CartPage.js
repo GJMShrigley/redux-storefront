@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import CartPageItem from "../components/CartPageItem";
-import "../cart-page.css"
+import "../cart.css"
 
 function CartPage() {
   const cart = useSelector((state) => state.cart);
@@ -15,12 +15,6 @@ function CartPage() {
     <CartPageItem
       key={item.id}
       id={item.id}
-      image={item.image}
-      price={item.price}
-      title={item.title}
-      ratingScore={item.ratingScore}
-      ratingCount={item.ratingCount}
-      quantity={item.quantity}
     />
   ));
 
