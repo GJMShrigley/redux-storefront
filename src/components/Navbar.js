@@ -93,7 +93,7 @@ export default function Navbar() {
   }
 
   const handleKeyPress = useCallback((e) => {
-    const searchButton = document.querySelector(".search-btn");
+    const searchButton = document.querySelector(".navbar__btn");
     if (e.key === "Enter") {
       searchButton.click();
     }
@@ -112,36 +112,36 @@ export default function Navbar() {
 
   return (
     <nav className="navbar">
-      <div className="navbar-search">
-        <input className="search-input" onChange={setText}></input>
-        <button className="search-btn button" onClick={search}>
+      <div className="navbar__search">
+        <input className="navbar__input" onChange={setText}></input>
+        <button className="navbar__btn button" onClick={search}>
           <Link to="/">SEARCH</Link>
         </button>
-        <select className="search-dropdown" onChange={changeSearchType}>
-            <option className="search-option">Title</option>
-            <option className="search-option">Description</option>
-            <option className="search-option">Rating</option>
+        <select className="navbar__search-dropdown" onChange={changeSearchType}>
+            <option className="navbar__search-option">Title</option>
+            <option className="navbar__search-option">Description</option>
+            <option className="navbar__search-option">Rating</option>
         </select>
-        <select className="sort-dropdown" onChange={changeSort}>
-          <option className="sort-option">Asc</option>
-          <option className="sort-option">Desc</option>
+        <select className="navbar__sort-dropdown" onChange={changeSort}>
+          <option className="navbar__sort-option">Asc</option>
+          <option className="navbar__sort-option">Desc</option>
         </select>
       </div>
-      <Link className="home-link" to="/">
-        <ul className="navbar-list">
-          <button className="navbar-item" onClick={changeCategory}>
+      <Link className="link__home" to="/">
+        <ul className="navbar__list">
+          <button className="navbar__item" onClick={changeCategory}>
             All
           </button>
-          <button className="navbar-item" onClick={changeCategory}>
+          <button className="navbar__item" onClick={changeCategory}>
             Electronics
           </button>
-          <button className="navbar-item" onClick={changeCategory}>
+          <button className="navbar__item" onClick={changeCategory}>
             Jewelery
           </button>
-          <button className="navbar-item" onClick={changeCategory}>
+          <button className="navbar__item" onClick={changeCategory}>
             Men's Clothing
           </button>
-          <button className="navbar-item" onClick={changeCategory}>
+          <button className="navbar__item" onClick={changeCategory}>
             Women's Clothing
           </button>
         </ul>

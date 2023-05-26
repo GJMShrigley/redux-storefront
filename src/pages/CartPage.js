@@ -21,7 +21,7 @@ function CartPage() {
   let cartList = (
     <div className="cart-page__list">
       {content}
-      <div className="cart-page-total">
+      <div className="cart-page__total">
         Total&#58;&nbsp;
         {totalPrice.toLocaleString("en-GB", {
           style: "currency",
@@ -29,11 +29,11 @@ function CartPage() {
           minimumFractionDigits: 2,
         })}
       </div>
-      <div className="cart-page-buttons-container">
-      <Link to="/" className="link-home button">
+      <div className="cart-page__buttons-container">
+      <Link to="/" className="link__home button">
         RETURN HOME
       </Link>
-      <Link to="/confirmation" className="cart-submit button">
+      <Link to="/confirmation" className="link__submit button">
           GO TO CHECKOUT
         </Link>
         </div>

@@ -5,7 +5,7 @@ import "../header.css";
 function Header() {
   return (
     <header className="header">
-      <div className="header-title">FAKE</div>
+      <div className="header__title">FAKE</div>
       <Cart />
     </header>
   );

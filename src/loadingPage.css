@@ -6,7 +6,7 @@
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(179, 255, 229, 1) 90%);
 }
 
-.loading {
+.loading__indicator {
     width: 30vh;
     height: 30vh;
     border-radius: 50%;

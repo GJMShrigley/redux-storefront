@@ -10,49 +10,49 @@
   z-index: 1;
 }
 
-.navbar-search {
+.navbar__search {
   display: flex;
   justify-content: center;
   grid-gap: .2rem;
 }
 
-.search-input {
-  border-radius: 100px;
+.navbar__input {
   border: 1px solid #ccc;
+  border-radius: 100px;
   width: 100%;
   padding-left: .3rem;
   color: #fff;
   background: rgba(0, 0, 0, .3);
 }
 
-.search-btn {
+.navbar__btn {
   min-width: fit-content;
   font-size: .6rem;
 }
 
-.search-btn:hover {
+.navbar__btn:hover {
   border: 1px solid rgba(204, 204, 229, 1);
   background: rgb(204, 229, 205);
 }
 
-.search-dropdown,
-.sort-dropdown {
-  border-radius: 10px;
+.navbar__search-dropdown,
+.navbar__sort-dropdown {
+  border-radius: 100px;
   border: 1px solid #ccc;
   width: 17vw;
   font-size: .7rem;
 }
 
-.search-option, 
-.sort-option {
+.navbar__search-option, 
+.navbar__sort-option {
   text-align: center; 
 }
 
-.home-link {
+.link__home {
   height: 5vh;
 }
 
-.navbar-list {
+.navbar__list {
   width: auto;
   height: 5vh;
   display: flex;
@@ -60,7 +60,7 @@
   z-index: 10;
 }
 
-.navbar-item {
+.navbar__item {
   border: none;
   border-right: 1px solid #b3b3ff;
   width: 100%;
@@ -76,7 +76,7 @@
   z-index: 10;
 }
 
-.navbar-item:hover {
+.navbar__item:hover {
   background: linear-gradient(180deg, rgba(179, 255, 242, 1) 0%, rgba(204, 204, 229, 1) 100%);
 }
 
@@ -87,42 +87,42 @@
     grid-gap: 0;
   }
 
-  .navbar-search {
+  .navbar__search {
     padding: 0 .4rem;
     grid-gap: .5rem;
   }
 
-  .search-input {
+  .navbar__input {
     width: 60vw;
     padding-left: 1rem;
   }
 
-  .search-btn {
+  .navbar__btn {
     min-width: 6rem;
     font-size: 1rem;
   }
 
-  .search-dropdown,
-  .sort-dropdown {
+  .navbar__search-dropdown,
+  .navbar__sort-dropdown {
     width: auto;
     font-size: .8rem;
   }
 
-  .home-link {
+  .hlink__home {
     height: 2rem;
   }
 
-  .navbar-list {
+  .navbar__list {
     height: 2.2rem
   }
   
-  .navbar-item {
+  .navbar__item {
     border-right: none;
     height: auto;
     font-size: .8rem;
   }
   
-  .navbar-item:hover {
+  .navbar__item:hover {
     border-right: 1px solid #b3b3ff;
     border-left: 1px solid #b3b3ff;
   }

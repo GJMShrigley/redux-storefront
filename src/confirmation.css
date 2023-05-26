@@ -10,19 +10,19 @@
     );
   }
 
-  .confirmation-page-container {
+  .confirmation__container {
     height: 42vh;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  .confirmation-page-title {
+  .confirmation__title {
     margin-bottom: 1rem;
     text-align: center;
   }
 
-  .confirmation-page-subtitle {
+  .confirmation__subtitle {
     margin-bottom: 1rem;
     text-align: center;
     color: #999;
@@ -34,12 +34,12 @@
     padding: 1rem;
   }
 
-  .confirmation-page-title {
+  .confirmation__title {
     margin-bottom: 1rem;
     text-align: center;
   }
 
-  .confirmation-page-subtitle {
+  .confirmation__subtitle {
     margin-bottom: 1rem;
     text-align: center;
     color: #999;

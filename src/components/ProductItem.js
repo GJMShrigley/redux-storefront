@@ -30,42 +30,42 @@ export default function ProductItem(props) {
     return (
       <Link
         to={`/product/${productId}`}
-        className="product-item"
+        className="product"
         state={{
           id: selectedProduct.id,
         }}
       >
-        <div className="product-image-wrapper">
+        <div className="product__image-wrapper">
           <img
-            className="product-image"
+            className="product__image"
             src={selectedProduct.image}
             alt="a photograph of the product"
           ></img>
         </div>
-        <div className="product-text-container">
-          <div className="product-details">
-            <div className="product-title">{selectedProduct.title}</div>
-            <div className="product-rating">
-              <div className="product-rating-score">
+        <div className="product__text-container">
+          <div className="product__details">
+            <div className="product__title">{selectedProduct.title}</div>
+            <div className="product__rating">
+              <div className="product__rating-score">
                 {selectedProduct.rating.rate}
               </div>
-              <div className="product-rating-number">
+              <div className="product__rating-number">
                 &#40;{selectedProduct.rating.count}&#41;
               </div>
             </div>
-            <div className="product-description">
+            <div className="product__description">
               {selectedProduct.description}
             </div>
           </div>
-          <div className="product-options">
-            <div className="product-price">
+          <div className="product__options">
+            <div className="product__price">
               {selectedProduct.price.toLocaleString("en-GB", {
                 style: "currency",
                 currency: "GBP",
                 minimumFractionDigits: 2,
               })}
             </div>
-            <div className="product-add button" onClick={addProductToCart}>
+            <div className="product__add button" onClick={addProductToCart}>
               ADD TO CART
             </div>
           </div>

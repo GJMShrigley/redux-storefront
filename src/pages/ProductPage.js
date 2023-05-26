@@ -67,7 +67,7 @@ function ProductPage() {
       </div>
       </div>
 
-      <Link to="/" className="link-home button">
+      <Link to="/" className="link__home button">
         RETURN TO LISTINGS
       </Link>
     </div>

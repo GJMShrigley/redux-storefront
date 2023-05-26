@@ -10,19 +10,19 @@
     );
   }
 
-  .error-page-container {
+  .error-page__container {
     height: 42vh;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  .error-page-title {
+  .error-page__title {
     margin-bottom: 1rem;
     text-align: center;
   }
 
-  .error-page-subtitle {
+  .error-page__subtitle {
     margin-bottom: 1rem;
     text-align: center;
     color: #999;
@@ -34,12 +34,12 @@
     padding: 1rem;
   }
 
-  .error-page-title {
+  .error-page__title {
     margin-bottom: 1rem;
     text-align: center;
   }
 
-  .error-page-subtitle {
+  .error-page__subtitle {
     margin-bottom: 1rem;
     text-align: center;
     color: #999;

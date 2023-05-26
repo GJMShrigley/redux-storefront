@@ -24,10 +24,10 @@ export default function Cart() {
   if (display) {
     modal = (
       <div className="cart-display">
-        <div className="cart-item-list">
+        <div className="cart-display__list">
         {content}
         </div>
-        <div className="cart-total">
+        <div className="cart-display__total">
           Total&#58;&nbsp;
           {totalPrice.toLocaleString("en-GB", {
             style: "currency",
@@ -35,11 +35,11 @@ export default function Cart() {
             minimumFractionDigits: 2,
           })}
         </div>
-        <div className="cart-buttons-container">
-          <Link to="/cart" className="cart-go-to button" onClick={mouseHandler}>
+        <div className="cart-display__buttons-container">
+          <Link to="/cart" className="link__cartPage button" onClick={mouseHandler}>
             GO TO CART
           </Link>
-          <Link to="/confirmation" className="cart-submit button" onClick={mouseHandler}>
+          <Link to="/confirmation" className="link__submit button" onClick={mouseHandler}>
             CHECKOUT
           </Link>
         </div>
@@ -53,7 +53,7 @@ export default function Cart() {
       onMouseEnter={mouseHandler}
       onMouseLeave={mouseHandler}
     >
-      <Link to="/cart" className="header-cart-btn">
+      <Link to="/cart" className="cart__btn">
         CART &#40;{totalQuantity}&#41;
       </Link>
       {modal}

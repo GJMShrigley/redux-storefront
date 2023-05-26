@@ -14,7 +14,7 @@
   z-index: 20;
 }
 
-.header-title {
+.header__title {
   -webkit-text-shadow: 0px 1px 1px #fff, 0 0 0 #d5ccff, 0px 1px 1px #d5ccff;
   -moz-text-shadow: 0px 1px 1px #fff, 0 0 0 #d5ccff, 0px 1px 1px #d5ccff;
   text-shadow: 0px 1px 1px #fff, 0 0 0 #d5ccff, 0px 1px 1px #d5ccff;
@@ -39,7 +39,7 @@
     padding-left: 1rem;
   }
 
-  .header-title {
+  .header__title {
     position: relative;
     top: 0;
     height: 3.2rem;
@@ -51,5 +51,10 @@
 @media (orientation: landscape) and (min-height: 500px) {
   .header {
     height: 15%;
+  }
+
+  .header__title {
+    font-size: 3.5rem;
+    line-height: 2.5rem;
   }
 }

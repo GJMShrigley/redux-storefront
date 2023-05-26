@@ -42,6 +42,13 @@
   background: #b3ffcc;
 }
 
+.link__cartPage,
+.link__submit,
+.link__home {
+  width: 100%;
+  height: 2.5rem;
+}
+
 @media (orientation: portrait) and (max-width: 300px) { 
 
   html {

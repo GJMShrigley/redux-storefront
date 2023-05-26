@@ -38,11 +38,11 @@ export default function ProductList() {
     setProductsOnPage(visibleProducts);
 
     //generate page numbers
-    const pageNav = document.querySelector(".page-nav");
+    const pageNav = document.querySelector(".page__nav");
     pageNav.textContent = "";
     for (let i = 0; i < selectedProducts.length / productsPerPage; i++) {
       const pageBtn = document.createElement("div");
-      pageBtn.classList.add("page-btn");
+      pageBtn.classList.add("page__btn");
       pageBtn.innerHTML = i + 1;
       pageBtn.onclick = selectPage;
       pageNav.appendChild(pageBtn);
@@ -63,7 +63,7 @@ export default function ProductList() {
   if (productStatus === "loading") {
     content = (
       <div className="loading-page">
-        <div className="loading"></div>
+        <div className="loading__indicator"></div>
       </div>
     );
   } else if (productStatus === "succeeded") {
@@ -73,10 +73,10 @@ export default function ProductList() {
   } else if (productStatus === "failed") {
     content = (
       <div className="error-page">
-        <div className="error-page-container">
-          <h1 className="error-page-title">AN ERROR HAS OCCURRED</h1>
-          <h2 className="error-page-subtitle">{error}</h2>
-          <Link to="/" className="link-home button">
+        <div className="error-page__container">
+          <h1 className="error-page__title">AN ERROR HAS OCCURRED</h1>
+          <h2 className="error-page__subtitle">{error}</h2>
+          <Link to="/" className="link__home button">
             RETURN HOME
           </Link>
         </div>
@@ -85,14 +85,14 @@ export default function ProductList() {
   }
 
   return (
-    <div className="product-list-wrapper">
+    <div className="product-list__wrapper">
       <ul className="product-list">{content}</ul>
-      <div className="page-buttons">
-        <nav className="page-nav"></nav>
-        <select className="page-dropdown" onChange={changeNumber}>
-          <option className="page-quantity">5</option>
-          <option className="page-quantity">10</option>
-          <option className="page-quantity">15</option>
+      <div className="page__buttons">
+        <nav className="page__nav"></nav>
+        <select className="page__dropdown" onChange={changeNumber}>
+          <option className="page__quantity">5</option>
+          <option className="page__quantity">10</option>
+          <option className="page__quantity">15</option>
         </select>
       </div>
     </div>

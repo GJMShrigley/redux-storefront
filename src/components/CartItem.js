@@ -51,35 +51,35 @@ export default function CartItem(props) {
       }}
       onClick={props.removeDisplay}
     >
-      <div className="cart-item-image-wrapper">
+      <div className="cart-item__image-wrapper">
         <img
-          className="cart-item-image"
+          className="cart-item__image"
           src={selectedProduct.image}
           alt="a photograph of the product"
         ></img>
       </div>
-      <div className="cart-item-details">
-        <div className="cart-item-title">{selectedProduct.title}</div>
-        <div className="cart-item-quantity-container">
-        <div className="cart-item-price">
+      <div className="cart-item__details">
+        <div className="cart-item__title">{selectedProduct.title}</div>
+        <div className="cart-item__info-container">
+        <div className="cart-item__price">
           {selectedProduct.price.toLocaleString("en-GB", {
             style: "currency",
             currency: "GBP",
             minimumFractionDigits: 2,
           })}
         </div>
-          <div className="cart-item-quantity">
+          <div className="cart-item__quantity">
             Quantity&#58;&nbsp;{selectedProduct.quantity}
           </div>
-          <div className="cart-item-buttons-container">
+          <div className="cart-item__buttons-container">
             <div
-              className="cart-item-add button"
+              className="cart-item__add button"
               onClick={addProductToCart}
             >
               ADD
             </div>
             <div
-              className="cart-item-remove button"
+              className="cart-item__remove button"
               onClick={removeProductFromCart}
             >
               REMOVE
