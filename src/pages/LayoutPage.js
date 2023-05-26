@@ -4,7 +4,6 @@ import Header from "../components/Header";
 import Navbar from "../components/Navbar";
 import { useSelector } from "react-redux";
 import Login from "../components/Login";
-import "../app.css";
 
 function LayoutPage() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
