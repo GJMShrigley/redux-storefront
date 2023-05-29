@@ -9,7 +9,7 @@ import LayoutPage from "./pages/LayoutPage";
 import ShopPage from "./pages/ShopPage";
 import ConfirmationPage from "./pages/ConfirmationPage";
 import ErrorPage from "./pages/ErrorPage";
-import "./app.css"
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
