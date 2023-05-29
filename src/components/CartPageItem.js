@@ -49,7 +49,7 @@ export default function CartPageItem(props) {
         id: productId,
       }}
     >
-      <div className="cart-item-__image-wrapper">
+      <div className="cart-item__image-wrapper">
         <img
           className="cart-item__image"
           src={selectedProduct.image}
