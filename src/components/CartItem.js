@@ -16,6 +16,7 @@ export default function CartItem(props) {
   });
 
   useEffect(() => {
+    // loop through the list of products, retrieve information on the selected product, and set it to local State
     for (let i = 0; i < products.length; i++) {
       if (products[i].id === productId) {
         setSelectedProduct(products[i]);
@@ -23,7 +24,7 @@ export default function CartItem(props) {
     }
   }, [products, productId]);
 
-
+  // update the global 'cart' State to remove the current product
   function removeProductFromCart(e) {
     e.preventDefault();
     for (let i = 0; i < products.length; i++) {
@@ -33,6 +34,7 @@ export default function CartItem(props) {
     }
   }
 
+  // update the global 'cart' State to add the current product
   function addProductToCart(e) {
     e.preventDefault();
     for (let i = 0; i < products.length; i++) {
@@ -61,21 +63,19 @@ export default function CartItem(props) {
       <div className="cart-item__details">
         <div className="cart-item__title">{selectedProduct.title}</div>
         <div className="cart-item__info-container">
-        <div className="cart-item__price">
-          {selectedProduct.price.toLocaleString("en-GB", {
-            style: "currency",
-            currency: "GBP",
-            minimumFractionDigits: 2,
-          })}
-        </div>
+          <div className="cart-item__price">
+            {selectedProduct.price.toLocaleString("en-GB", {
+              //convert 'price' into currency
+              style: "currency",
+              currency: "GBP",
+              minimumFractionDigits: 2,
+            })}
+          </div>
           <div className="cart-item__quantity">
             Quantity&#58;&nbsp;{selectedProduct.quantity}
           </div>
           <div className="cart-item__buttons-container">
-            <div
-              className="cart-item__add button"
-              onClick={addProductToCart}
-            >
+            <div className="cart-item__add button" onClick={addProductToCart}>
               ADD
             </div>
             <div

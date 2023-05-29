@@ -17,6 +17,7 @@ function ProductPage() {
     title: "",
   });
 
+  // loop through the list of products, retrieve information on the selected product, and set it to local State
   useEffect(() => {
     for (let i = 0; i < products.length; i++) {
       if (products[i].id === productId) {
@@ -25,6 +26,7 @@ function ProductPage() {
     }
   }, [products, location, productId]);
 
+  // update the global 'cart' State to add the current product
   function addProductToCart() {
     for (let i = 0; i < products.length; i++) {
       if (products[i].id === productId) {
@@ -56,6 +58,7 @@ function ProductPage() {
         <div className="product-page__options">
         <div className="product-page__price">
           {selectedProduct.price.toLocaleString("en-GB", {
+             //convert 'price' into currency
             style: "currency",
             currency: "GBP",
             minimumFractionDigits: 2,

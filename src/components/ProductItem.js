@@ -10,6 +10,7 @@ export default function ProductItem(props) {
   const [selectedProduct, setSelectedProduct] = useState({});
 
   useEffect(() => {
+     // loop through the list of products, retrieve information on the selected product, and set it to local State
     for (let i = 0; i < products.length; i++) {
       if (products[i].id === productId) {
         setSelectedProduct(products[i]);
@@ -17,6 +18,7 @@ export default function ProductItem(props) {
     }
   }, [products, productId]);
 
+    // update the global 'cart' State to add the current product
   function addProductToCart(e) {
     e.preventDefault();
     for (let i = 0; i < products.length; i++) {
@@ -26,6 +28,7 @@ export default function ProductItem(props) {
     }
   }
 
+  // display the element if its 'display' property is true
   if (selectedProduct.display) {
     return (
       <Link
@@ -60,6 +63,7 @@ export default function ProductItem(props) {
           <div className="product__options">
             <div className="product__price">
               {selectedProduct.price.toLocaleString("en-GB", {
+                //convert 'price' into currency
                 style: "currency",
                 currency: "GBP",
                 minimumFractionDigits: 2,

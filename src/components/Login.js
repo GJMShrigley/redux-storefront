@@ -5,6 +5,8 @@ import "../login.css";
 
 const Login = () => {
   const dispatch = useDispatch();
+  
+  // update the global State to reflect user login
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(authActions.login());

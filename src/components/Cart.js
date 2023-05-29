@@ -16,11 +16,14 @@ export default function Cart() {
   let content = cartItems.map((item) => (
     <CartItem key={item.id} id={item.id} removeDisplay={mouseHandler} />
   ));
-
+  
+  // switch the cart modal on/off when entering/leaving the modal or when clicking onto new page
   function mouseHandler() {
     setDisplay(!display);
   }
 
+
+  // display the modal Element if 'display' is true
   if (display) {
     modal = (
       <div className="cart-display">
@@ -29,7 +32,7 @@ export default function Cart() {
         </div>
         <div className="cart-display__total">
           Total&#58;&nbsp;
-          {totalPrice.toLocaleString("en-GB", {
+          {totalPrice.toLocaleString("en-GB", { //convert 'totalPrice' into currency
             style: "currency",
             currency: "GBP",
             minimumFractionDigits: 2,
@@ -54,7 +57,7 @@ export default function Cart() {
       onMouseLeave={mouseHandler}
     >
       <Link to="/cart" className="cart__btn">
-        CART &#40;{totalQuantity}&#41;
+        CART &#40;{totalQuantity}&#41;        
       </Link>
       {modal}
     </div>

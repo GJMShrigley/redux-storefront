@@ -13,23 +13,27 @@ export default function Navbar() {
   const [category, setCategory] = useState("all");
   const [sort, setSort] = useState("asc");
 
+  // fetch a product list from the fakestore API according to the selected parameters (category, and sort order)
   useEffect(() => {
     const params = { category, sort };
     dispatch(fetchProductData(params));
   }, [dispatch, category, sort]);
 
+  // update the local 'category' State according to the selected navbar element
   function changeCategory(e) {
     const target = e.target.innerHTML.toLowerCase();
     const string = target.toString();
     setCategory(string);
   }
 
+  // update the local 'sort' State according to the selected option in the dropdown menu
   function changeSort(e) {
     const target = e.target.value.toLowerCase();
     const string = target.toString();
     setSort(string);
   }
 
+  // update the local 'search type' State according to the selected option in the dropdown menu
   function changeSearchType(e) {
     const target = e.target.value.toLowerCase();
     const string = target.toString();
@@ -54,17 +58,20 @@ export default function Navbar() {
     setSearchType(value);
   }
 
+  // update the 'searchText' State with the contents of the input field
   function setText(e) {
     setSearchText(e.target.value);
   }
 
   function search() {
+    // create copies of 'searchText', and 'products'. Create new Variables, and Regex based on the new input field text
     let inputText = searchText;
     const productsCopy = JSON.parse(JSON.stringify([...products]));
     let searchTypeValue = "";
     const searchTerm = new RegExp(inputText, "i");
     let result = "";
 
+    // carry out a search of the productsCopy Variable based on the value of the input field, and the search type selected
     if (isNaN(searchText) && searchType === "rating.rate") {
       //Do nothing
     } else if (!isNaN(searchText) && searchType === "rating.rate") {
@@ -81,8 +88,9 @@ export default function Navbar() {
       for (let i = 0; i < productsCopy.length; i++) {
         const currentProduct = productsCopy[i];
         searchTypeValue = currentProduct[searchType];
-        result = searchTerm.test(searchTypeValue);
+        result = searchTerm.test(searchTypeValue); // test the current product in the loop against the Regex
         if (result) {
+          // if the current product in the loop contains the Regex in the selected property, set it to display, otherwise remove it from the list of elements
           productsCopy[i].display = true;
         } else {
           productsCopy[i].display = false;
@@ -92,6 +100,7 @@ export default function Navbar() {
     }
   }
 
+  // trigger a 'click' on the navbar search button when the 'handleKeyPress' Function is called
   const handleKeyPress = useCallback((e) => {
     const searchButton = document.querySelector(".navbar__btn");
     if (e.key === "Enter") {
@@ -99,16 +108,15 @@ export default function Navbar() {
     }
   }, []);
 
+  // update the global 'products' State with the list of updated products resulting from a search
   useEffect(() => {
     dispatch(addProducts(searchResult));
   }, [dispatch, searchResult]);
 
+  // add a listener for the 'keydown' event
   useEffect(() => {
     document.addEventListener("keydown", handleKeyPress);
-    return () => {
-      document.removeEventListener("keydown", handleKeyPress);
-    };
-  }, [handleKeyPress]);
+  });
 
   return (
     <nav className="navbar">
@@ -118,9 +126,9 @@ export default function Navbar() {
           <Link to="/">SEARCH</Link>
         </button>
         <select className="navbar__search-dropdown" onChange={changeSearchType}>
-            <option className="navbar__search-option">Title</option>
-            <option className="navbar__search-option">Description</option>
-            <option className="navbar__search-option">Rating</option>
+          <option className="navbar__search-option">Title</option>
+          <option className="navbar__search-option">Description</option>
+          <option className="navbar__search-option">Rating</option>
         </select>
         <select className="navbar__sort-dropdown" onChange={changeSort}>
           <option className="navbar__sort-option">Asc</option>
