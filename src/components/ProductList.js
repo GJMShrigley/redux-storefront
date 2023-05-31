@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "../display.css";
 import "../loadingPage.css";
-import "../errorPage.css";
+import "../message.css";
 
 export default function ProductList() {
   const products = useSelector((state) => state.products.products);

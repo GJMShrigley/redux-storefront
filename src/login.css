@@ -1,122 +1,101 @@
 .login-page {
-  width: 100vw;
-  height: 64.7vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(
-    180deg,
-    rgba(179, 255, 242, 1) 0%,
-    rgba(179, 255, 191, 1) 60%
-  );
-  overflow: auto;
+    width: 100vw;
+    height: 64.7vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient( 180deg, rgb(179, 255, 242, 1) 0%, rgb(179, 255, 191, 1) 60%);
+    overflow: auto;
 }
 
 .login__form-wrapper {
-  -webkit-box-shadow: inset -0.5px 0.5px 5px 1px #d5ccff,
-    inset 0px 0px 0px 10px #fff;
-  -moz-box-shadow: inset -0.5px 0.5px 5px 1px #d5ccff,
-    inset 0px 0px 0px 10px #fff;
-  box-shadow: inset -0.5px 0.5px 5px 1px #d5ccff, inset 0px 0px 0px 10px #fff;
-  height: 100%;
-  display: flex;
-  justify-content: center;
+    box-shadow: -0.5px 0.5px 5px 1px #d5ccff inset, 0 0 0 10px #fff inset;
+    height: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .login__form {
-  width: 90%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  grid-gap: 10%;
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10%;
 }
 
 .login__title {
-  -webkit-text-shadow: 0px 1px 1px #fff, 0 0 0 #d5ccff, 0px 1px 1px #d5ccff;
-  -moz-text-shadow: 0px 1px 1px #fff, 0 0 0 #d5ccff, 0px 1px 1px #d5ccff;
-  text-shadow: 0px 1px 1px #fff, 0 0 0 #d5ccff, 0px 1px 1px #d5ccff;
-  font-size: 2.5rem;
-  color: transparent;
+    text-shadow: 0 1px 1px #fff, 0 0 0 #d5ccff, 0 1px 1px #d5ccff;
+    font-size: 2.5rem;
+    color: transparent;
 }
 
 .login__form-element-container {
-  width: 85vw;
-  display: flex;
-  justify-content: center;
-  font-size: .8rem;
+    width: 85vw;
+    display: flex;
+    justify-content: center;
+    font-size: 0.8rem;
 }
 
 .login__label {
-  width: fit-content;
-  height: 2rem;
-  display: flex;
-  align-items: center;
+    width: fit-content;
+    height: 2rem;
+    display: flex;
+    align-items: center;
 }
 
 .login__input {
-  width: 65%;
-  height: 2rem;
-  padding-left: 0.5rem;
+    width: 65%;
+    height: 2rem;
+    padding-left: 0.5rem;
 }
 
 .login__btn {
-  width: 5rem;
-  height: 2rem;
-  font-size: 1.2rem;
-  text-align: center;
-  line-height: 1.2rem;
+    width: 5rem;
+    height: 2rem;
+    font-size: 1.2rem;
+    text-align: center;
+    line-height: 1.2rem;
 }
 
 @media (orientation: landscape) {
-
-  .login__screen {
-    height: 65vh;
-    overflow-y: hidden;
-  }
-  .login__form-wrapper {
-    -webkit-box-shadow: inset -0.5px 0.5px 5px 1px #d5ccff,
-      inset 0px 0px 0px 15px #fff;
-    -moz-box-shadow: inset -0.5px 0.5px 5px 1px #d5ccff,
-      inset 0px 0px 0px 15px #fff;
-    box-shadow: inset -0.5px 0.5px 5px 1px #d5ccff, inset 0px 0px 0px 15px #fff;
-    width: 90vw;
-    height: 95%;
-    align-items: center;
-  }
-
-  .login__form {
-    width: 90%;
-    height: 90%;
-    grid-gap: 3vh;
-  }
-
-  .login__title {
-    font-size: 2rem;
-  }
-
-  .login__form-element-container {
-    width: 100%;
-  }
-
-  .login__label {
-    width: 6rem;
-    height: 2rem;
-  }
-
-  .login__input {
-    max-width: 30rem;
-  }
-
-  .login__btn {
-    height: 2rem;
-  }
+    .login__screen {
+        height: 65vh;
+        overflow-y: hidden;
+    }
+    .login__form-wrapper {
+        box-shadow: -0.5px 0.5px 5px 1px #d5ccff inset, 0 0 0 15px #fff inset;
+        width: 90vw;
+        height: 95%;
+        align-items: center;
+    }
+    .login__form {
+        width: 90%;
+        height: 90%;
+        gap: 3vh;
+    }
+    .login__title {
+        font-size: 2rem;
+    }
+    .login__form-element-container {
+        width: 100%;
+    }
+    .login__label {
+        width: 6rem;
+        height: 2rem;
+    }
+    .login__input {
+        max-width: 30rem;
+    }
+    .login__btn {
+        height: 2rem;
+    }
 }
 
 @media (orientation: landscape) and (min-height: 500px) {
-  .login-page {
-    height: 73%;
-  } 
+    .login-page {
+        height: 73%;
+    }
 }

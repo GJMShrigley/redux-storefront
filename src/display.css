@@ -1,202 +1,193 @@
 .display {
-  height: 76vh;
-  width: 100vw;
-  overflow: auto;
+    height: 76vh;
+    width: 100vw;
+    overflow: auto;
 }
 
 .product-list {
-  width: auto;
-  height: auto;
-  overflow: hidden;
+    width: auto;
+    height: auto;
+    overflow: hidden;
 }
 
 .product {
-  box-shadow: 1px 1px 5px #999;
-  margin: 0.5rem;
-  border-radius: 8px;
-  padding: 0.2rem;
-  width: 95%;
-  display: flex;
-  text-decoration: none;
-  background: #fff;
-  transition: all 0.5s ease-in-out;
+    box-shadow: 1px 1px 5px #999;
+    margin: 0.5rem;
+    border-radius: 8px;
+    padding: 0.2rem;
+    width: 95%;
+    display: flex;
+    text-decoration: none;
+    background: #fff;
+    transition: all 0.5s ease-in-out;
 }
 
 .product__image-wrapper {
-  width: 3rem;
-  min-width: 3rem;
-  display: flex;
-  align-items: center;
+    width: 3rem;
+    min-width: 3rem;
+    display: flex;
+    align-items: center;
 }
 
 .product__image {
-  height: auto;
-  max-height: 95%;
-  max-width: 3rem;
+    height: auto;
+    max-height: 95%;
+    max-width: 3rem;
 }
 
 .product__text-container {
-  width: 80%;
-  display: flex;
-  flex-direction: column;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
 }
 
 .product__details {
-  margin-left: 0.5rem;
-  width: 100%;
-  display: flex;
-  grid-gap: 0.2rem;
-  flex-direction: column;
+    margin-left: 0.5rem;
+    width: 100%;
+    display: flex;
+    gap: 0.2rem;
+    flex-direction: column;
 }
 
 .product__title {
-  margin-bottom: 0.2rem;
-  font-size: 0.7rem;
-  color: #000;
-  font-weight: 700;
-  letter-spacing: 0.15rem;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.product__rating {
-  margin-bottom: 0.2rem;
-  display: flex;
-  font-size: 0.7rem;
-}
-
-.product__rating-score {
-  font-weight: 700;
-  color: #00b377;
-}
-
-.product__rating-number {
-  margin-left: 0.5rem;
-  color: #009980;
-}
-
-.product__description {
-  width: 75vw;
-  display: none;
-  color: #000;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.product__options {
-  margin-left: 0.5rem;
-  width: 100%;
-  display: flex;
-  grid-gap: 0.2rem;
-  flex-direction: row;
-}
-
-.product__price {
-  width: 100%;
-  font-size: 0.8rem;
-  color: #000;
-  font-weight: 700;
-  letter-spacing: 0.2rem;
-}
-
-.product__add {
-  width: fit-content;
-}
-
-.page__buttons {
-  margin: 0.5vh 0 0 0.5vh;
-  width: 99vw;
-  height: 1.5rem;
-  display: flex;
-  justify-content: flex-start;
-}
-
-.page__nav {
-  margin-right: 1rem;
-  height: 2vh;
-  display: flex;
-}
-
-.page__btn {
-  border-right: 1px solid #000;
-  width: 3.6rem;
-  height: 1.5rem;
-  text-align: center;
-  justify-items: center;
-  cursor: pointer;
-}
-
-.page__btn:hover {
-  background: #e6ffee;
-}
-
-.page__dropdown {
-  width: auto;
-  display: flex;
-}
-
-@media (orientation: landscape) {
-  .display {
-    height: 64.7vh;
-  }
-
-  .product__image-wrapper {
-    width: 5rem;
-  }
-
-  .product__image {
-    max-width: 5rem;
-  }
-
-  .product__details {
-    margin-left: 1rem;
-    width: 100%;
-  }
-
-  .product__title {
-    font-size: 1rem;
-  }
-
-  .product__description {
-    display: initial;
+    margin-bottom: 0.2rem;
+    font-size: 0.7rem;
+    color: #000;
+    font-weight: 700;
+    letter-spacing: 0.15rem;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-  }
+}
 
-  .product__options {
-    margin-left: 1rem;
-    flex-direction: column;
-    justify-content: space-around;
-  }
+.product__rating {
+    margin-bottom: 0.2rem;
+    display: flex;
+    font-size: 0.7rem;
+}
 
-  .product__price {
-    font-size: 1rem;
-  }
+.product__rating-score {
+    font-weight: 700;
+    color: #00b377;
+}
 
-  .page__buttons {
-    margin-bottom: .2rem;
-  }
+.product__rating-number {
+    margin-left: 0.5rem;
+    color: #009980;
+}
+
+.product__description {
+    width: 75vw;
+    display: none;
+    color: #000;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.product__options {
+    margin-left: 0.5rem;
+    width: 100%;
+    display: flex;
+    gap: 0.2rem;
+    flex-direction: row;
+}
+
+.product__price {
+    width: 100%;
+    font-size: 0.8rem;
+    color: #000;
+    font-weight: 700;
+    letter-spacing: 0.2rem;
+}
+
+.product__add {
+    width: fit-content;
+}
+
+.page__buttons {
+    margin: 0.5vh 0 0 0.5vh;
+    width: 99vw;
+    height: 1.5rem;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.page__nav {
+    margin-right: 1rem;
+    height: 2vh;
+    display: flex;
+}
+
+.page__btn {
+    border-right: 1px solid #000;
+    width: 3.6rem;
+    height: 1.5rem;
+    text-align: center;
+    justify-items: center;
+    cursor: pointer;
+}
+
+.page__btn:hover {
+    background: #e6ffee;
+}
+
+.page__dropdown {
+    width: auto;
+    display: flex;
+}
+
+@media (orientation: landscape) {
+    .display {
+        height: 64.7vh;
+    }
+    .product__image-wrapper {
+        width: 5rem;
+    }
+    .product__image {
+        max-width: 5rem;
+    }
+    .product__details {
+        margin-left: 1rem;
+        width: 100%;
+    }
+    .product__title {
+        font-size: 1rem;
+    }
+    .product__description {
+        display: initial;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    .product__options {
+        margin-left: 1rem;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .product__price {
+        font-size: 1rem;
+    }
+    .page__buttons {
+        margin-bottom: 0.2rem;
+    }
 }
 
 @media (orientation: landscape) and (min-width: 801px) {
-  .product {
-    box-shadow: none;
-    padding: 1vh;
-    width: 98vw;
-    overflow: hidden;
-  }
-  
-  .product:hover {
-    box-shadow: 1px 1px 5px #999;
-    background: #fff;
-  }
+    .product {
+        box-shadow: none;
+        padding: 1vh;
+        width: 98vw;
+        overflow: hidden;
+    }
+    .product:hover {
+        box-shadow: 1px 1px 5px #999;
+        background: #fff;
+    }
 }
 
 @media (orientation: landscape) and (min-height: 500px) {
-  .display {
-    height: 73%;
-  } 
+    .display {
+        height: 73%;
+    }
 }

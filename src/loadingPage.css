@@ -3,16 +3,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(179, 255, 229, 1) 90%);
+    background: linear-gradient(180deg, rgb(255, 255, 255, 0.7) 0%, rgb(179, 255, 229, 1) 90%);
 }
 
 .loading__indicator {
     width: 30vh;
     height: 30vh;
     border-radius: 50%;
-    background:conic-gradient(#0000 20%,#BBB6F4);
-    -webkit-mask:radial-gradient(farthest-side,#0000 calc(100% - 40px),#000 0);
-    animation:s3 1s infinite linear;
+    background: conic-gradient(#0000 20%, #BBB6F4);
+    animation: s3 1s linear infinite;
 }
 
 @media (orientation: landscape) {
@@ -23,8 +22,12 @@
 
 @media (orientation: landscape) and (min-height: 500px) {
     .loading-page {
-      height: 75vh;
-    } 
-  }
+        height: 75vh;
+    }
+}
 
-@keyframes s3 {to{transform: rotate(1turn)}}
+@keyframes s3 {
+    to {
+        transform: rotate(1turn);
+    }
+}
