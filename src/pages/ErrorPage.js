@@ -4,9 +4,9 @@ import "../message.css";
 
 function ErrorPage() {
   return (
-      <div className="error-page">
-        <div className="error-page__container">
-          <h1 className="error-page__title">THE PAGE YOU ARE LOOKING FOR DOES NOT EXIST</h1>
+      <div className="message-page">
+        <div className="message-page__container">
+          <h1 className="message-page__title">THE PAGE YOU ARE LOOKING FOR DOES NOT EXIST</h1>
           <Link to="/" className="link__home button">
             RETURN HOME
           </Link>

@@ -66,12 +66,12 @@
     font-size: 0.7rem;
 }
 
-.product__rating-score {
+.product__score {
     font-weight: 700;
     color: #00b377;
 }
 
-.product__rating-number {
+.product__number {
     margin-left: 0.5rem;
     color: #009980;
 }

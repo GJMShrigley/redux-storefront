@@ -49,10 +49,10 @@ export default function ProductItem(props) {
           <div className="product__details">
             <div className="product__title">{selectedProduct.title}</div>
             <div className="product__rating">
-              <div className="product__rating-score">
+              <div className="product__score">
                 {selectedProduct.rating.rate}
               </div>
-              <div className="product__rating-number">
+              <div className="product__number">
                 &#40;{selectedProduct.rating.count}&#41;
               </div>
             </div>

@@ -72,10 +72,10 @@ export default function ProductList() {
     ));
   } else if (productStatus === "failed") {
     content = (
-      <div className="error-page">
-        <div className="error-page__container">
-          <h1 className="error-page__title">AN ERROR HAS OCCURRED</h1>
-          <h2 className="error-page__subtitle">{error}</h2>
+      <div className="message-page">
+        <div className="message-page__container">
+          <h1 className="message-page__title">AN ERROR HAS OCCURRED</h1>
+          <h2 className="message-page__subtitle">{error}</h2>
           <Link to="/" className="link__home button">
             RETURN HOME
           </Link>
