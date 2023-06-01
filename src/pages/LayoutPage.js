@@ -1,20 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { authActions } from "../store/auth-slice"
 import Header from "../components/Header";
 import Navbar from "../components/Navbar";
-import { useSelector } from "react-redux";
 import Login from "../components/Login";
 
 function LayoutPage() {
-  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const dispatch = useDispatch();
 
-  //render the login page if the user is not logged in, otherwise render the store/cart/message display
+  // on first render, check sessionStorage to see if the user has logged in this browser session and set the local 'isLoggedIn' State accordingly
+  useEffect(() => {
+    const value = sessionStorage.getItem("login");
+    let boolean = value === "true";
+    setIsLoggedIn(boolean)
+  }, [])
+
+  // set both the local and global 'isLoggedIn' States to true 
+  function loginHandler() {
+    setIsLoggedIn(true);
+    dispatch(authActions.login());
+  }
+
+  // set both the local and global 'isLoggedIn' States to false  
+  function logoutHandler() {
+    setIsLoggedIn(false);
+    dispatch(authActions.logout());
+  }
+
+  //render the store/cart/message display if the local 'isLoggedIn' State is true, otherwise render the login page 
   return (
     <div className="App">
-      <Header />
+      <Header isLoggedIn={isLoggedIn} logoutHandler={logoutHandler} />
       <Navbar />
-      {!isLoggedIn && <Login />}
-      {isLoggedIn && <Outlet />}
+      {isLoggedIn === true ? <Outlet /> : <Login loginHandler={loginHandler} />}
     </div>
   );
 }

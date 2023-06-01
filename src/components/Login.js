@@ -1,15 +1,11 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { authActions } from "../store/auth-slice";
 import "../login.css";
 
-const Login = () => {
-  const dispatch = useDispatch();
-  
-  // update the global State to reflect user login
+function Login(props) {
+  // call the loginHandler Function in the layoutPage component to change the global 'isLoggedIn' State
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(authActions.login());
+    props.loginHandler();
   };
 
   return (

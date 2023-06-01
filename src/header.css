@@ -21,6 +21,12 @@
     letter-spacing: 0.18rem;
 }
 
+.header__buttons {
+    height: 2rem;
+    display: flex;
+    gap: 1rem;
+}
+
 @media (orientation: landscape) {
     .header {
         box-shadow: -0.5px 0.5px 5px 1px #d5ccff inset, 0 0 0 5px #fff inset;
