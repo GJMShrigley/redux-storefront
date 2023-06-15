@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+# E-COMMERCE STOREFRONT
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React-based front end for an e-commerce store. Log in and out, add and remove products from your cart, view individual product pages, and search products based on title, description, or rating.
 
-## Available Scripts
+## [](https://github.com/GJMShrigley/redux-storefront#how-to-use)HOW TO USE:
 
-In the project directory, you can run:
+In the project directory, run `npm install` to ensure that all dependancies are up to date.
 
-### `npm start`
+The app is now ready to run locally. Run the command `npm run start` in the project directory to open a local instance for testing and further development or `npm run build` to build for production.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### [](https://github.com/GJMShrigley/redux-storefront#logging-in)Logging in:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+To view the store you must first log in. Upon loading the app you will be presented with a login page with fields for a username and password. Currently neither is needed to access the page and you can simply click the login button to proceed. Your login state will persist across page reloads.
 
-### `npm test`
+If you wish to log out simply click the log out button in the header element to return to the login screen.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### [](https://github.com/GJMShrigley/redux-storefront#searching-products)Searching products:
 
-### `npm run build`
+After logging in a list of products will be fetched from the FakeStore API. You may temporarily see a loading screen (denoted by a rotating blue ring) while the request is made. Once loaded you will be able to select categories of products using the buttons at the bottom of the header element. Clicking one of these buttons will prompt the app to fetch another list from the API consisting only of the category selected.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To search through the list of products, type a query into the input field and either click the 'search' button to the right of the input, or press the 'enter' key if using a keyboard. You can select a search type from the dropdown menu to the right of the 'search' button. The search type options allow for searching the title, description, or rating of the products. To the right of the search type dropdown menu allows you to choose whether results are displayed in ascending or descending order.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Products are displayed in a vertical list. Initially only 5 products will be shown per page. At the bottom of the list a series of buttons allows you to select which page of products you wish to view. The number of products per page can be changed by selecting a value of 5, 10, or 15 from the dropdown menu to the right of the page buttons.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+If the app is unable to receive a response from the API an error message will be displayed.
 
-### `npm run eject`
+### [](https://github.com/GJMShrigley/redux-storefront#viewing-a-product)Viewing a product:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Clicking on a product's element will load a new page containing a larger image of the product and all its relevant details, including a full description. A button at the bottom of the page will allow you to return to the product list.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### [](https://github.com/GJMShrigley/redux-storefront#adding-a-product-to-the-cart)Adding a product to the cart:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Each product element on the product list contains an 'add to cart' button. Clicking this button will add it to the cart. Subsequent clicks will increase the quantity of that product in the cart.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Each product page also contains an 'add to cart' button with the same functionality.
 
-## Learn More
+The cart can be viewed at any time by hovering over (or clicking on mobile) the cart button in the header element. This will display a modal along the right-hand side of the screen containing a list of all products currently in the cart. This list will display the products in the cart, their price, their quantity, and the option to increase, or decrease their quantity. Decreasing a product's quantity to 0 will remove it from the cart entirely.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The cart modal also displays a total price (in GBP) for all items in the cart.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The bottom of the cart modal contains buttons that load the cart page or take you straight to the order confirmation screen.
 
-### Code Splitting
+### [](https://github.com/GJMShrigley/redux-storefront#completing-a-purchase)Completing a purchase
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Currently the app allows for the user to confirm an order by clicking the 'checkout' button in the cart modal or the 'go to checkout' button in the cart screen.
 
-### Analyzing the Bundle Size
+## [](https://github.com/GJMShrigley/redux-storefront#how-it-works)HOW IT WORKS:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### [](https://github.com/GJMShrigley/redux-storefront#managing-global-state)Managing global State:
 
-### Making a Progressive Web App
+Redux 'Provider' Components wrap the other app Components in the 'index.js' file. By importing the 'store' object and passing it to the 'Provider' Component, the wrapped Components are given access to the store and its contents.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+The 'store' directory contains 4 files, each managing a separate part of the app's global State.
 
-### Advanced Configuration
+- The 'auth-slice.js' file uses the Redux Toolkit 'createSlice' API to handle the initial State, Reducers, and Actions related to login and authorization features. The initial State is an Object with a single Property: 'isLoggedIn' set to 'false'. The Slice contains a 'login' Reducer which, when dispatched, will set 'isLoggedIn' to 'true' and set an item in the browser's session storage that records the current 'isLoggedIn' value. The Slice also contains a 'logout' Reducer which, when dispatched, will set 'isLoggedIn' to 'false' and update the item in the browser's session storage.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The 'index.js' file configures and exports the 'store' to be used by the other Components in the app.
