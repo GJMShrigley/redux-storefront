@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart } from "../store/cart-slice";
 import "../productPage.css";
 
 function ProductPage() {
-  const location = useLocation();
-  const productId = location.state.id;
+  const params = useParams();
+  const productId = parseInt(params.id);
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products.products);
   const [selectedProduct, setSelectedProduct] = useState({
@@ -24,7 +24,7 @@ function ProductPage() {
         setSelectedProduct(products[i]);
       }
     }
-  }, [products, location, productId]);
+  }, [products, params, productId]);
 
   // update the global 'cart' State to add the current product
   function addProductToCart() {
