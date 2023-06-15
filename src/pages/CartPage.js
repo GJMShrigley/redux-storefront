@@ -5,6 +5,7 @@ import CartPageItem from "../components/CartPageItem";
 import "../cart.css";
 
 function CartPage() {
+
   const cart = useSelector((state) => state.cart);
   const [cartItems, totalPrice] = [cart.list, cart.totalPrice];
 

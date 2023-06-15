@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { authActions } from "../store/auth-slice"
+import { login, logout } from "../store/auth-slice"
 import Header from "../components/Header";
 import Navbar from "../components/Navbar";
 import Login from "../components/Login";
@@ -20,13 +20,13 @@ function LayoutPage() {
   // set both the local and global 'isLoggedIn' States to true 
   function loginHandler() {
     setIsLoggedIn(true);
-    dispatch(authActions.login());
+    dispatch(login());
   }
 
   // set both the local and global 'isLoggedIn' States to false  
   function logoutHandler() {
     setIsLoggedIn(false);
-    dispatch(authActions.logout());
+    dispatch(logout());
   }
 
   //render the store/cart/message display if the local 'isLoggedIn' State is true, otherwise render the login page 
